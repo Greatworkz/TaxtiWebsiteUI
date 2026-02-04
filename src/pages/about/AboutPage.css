@@ -1,0 +1,432 @@
+/* ============================================================
+   ABOUT PAGE - BASE
+   ============================================================ */
+   .about-page {
+    width: 100%;
+    background: #fff;
+  }
+  
+  /* ============================================================
+     HERO SECTION WITH ABOUT CARD
+     ============================================================ */
+  .hero-about-section {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* Dark overlay on background */
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    
+  }
+  
+  .about-card {
+    background: #fff;
+    max-width: 580px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+  
+  .about-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  
+  .title-orange {
+    color: #f7931e;
+  }
+  
+  .about-tagline {
+    font-size: 17px;
+    font-style: italic;
+    color: #555;
+    margin: 0 0 20px 0;
+    font-weight: 500;
+  }
+  
+  .about-text {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #444;
+    margin: 0;
+  }
+  
+  /* ============================================================
+     MY PARIS SECTION
+     ============================================================ */
+  .my-paris-section {
+    padding: 80px 0;
+    background: #fff;
+    position: relative;
+  }
+  
+  .my-paris-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  /* Blue image dimension badge */
+  .image-badge {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2196f3;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+    z-index: 10;
+  }
+  
+  .my-paris-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .paris-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .eiffel-watercolor-img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    display: block;
+  }
+  
+  .paris-content-col {
+    padding-right: 20px;
+  }
+  
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .section-bar {
+    width: 4px;
+    height: 28px;
+    background: #f7931e;
+    border-radius: 2px;
+  }
+  
+  .section-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  
+  .paris-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #555;
+    margin: 0 0 28px 0;
+  }
+  
+  .btn-see-more {
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  
+  .btn-see-more:hover {
+    background: #1976d2;
+    transform: translateY(-1px);
+  }
+  
+  .btn-see-more:active {
+    transform: translateY(0);
+  }
+  
+
+  
+  /* ============================================================
+     RESPONSIVE DESIGN
+     ============================================================ */
+  
+  /* Desktop Large - 1280px and below */
+  @media (max-width: 1280px) {
+    .hero-content,
+    .my-paris-container{
+      padding: 60px 32px;
+    }
+  
+    .my-paris-grid {
+      gap: 48px;
+    }
+  }
+  
+  /* Tablet - 1024px and below */
+  @media (max-width: 1024px) {
+    .hero-about-section {
+      min-height: 550px;
+    }
+  
+    .about-card {
+      max-width: 520px;
+      padding: 36px;
+    }
+  
+    .about-title {
+      font-size: 28px;
+    }
+  
+    .my-paris-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  
+   
+  }
+  
+  /* Mobile Landscape - 900px and below */
+  @media (max-width: 900px) {
+    .hero-about-section {
+      min-height: auto;
+      padding: 60px 0;
+    }
+  
+    .hero-content {
+      padding: 0 24px;
+    }
+  
+    .about-card {
+      max-width: 100%;
+    }
+  
+    .my-paris-section{
+      padding: 60px 0;
+    }
+  
+    .my-paris-container{
+      padding: 0 24px;
+    }
+  
+    .my-paris-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  
+    .paris-image-col {
+      order: 1;
+    }
+  
+    .paris-content-col {
+      order: 2;
+      padding-right: 0;
+    }
+  
+    .eiffel-watercolor-img {
+      max-width: 320px;
+    }
+  }
+  
+  /* Mobile Portrait - 768px and below */
+  @media (max-width: 768px) {
+    .about-card {
+      padding: 32px 24px;
+    }
+  
+    .about-title {
+      font-size: 24px;
+    }
+  
+    .about-tagline {
+      font-size: 15px;
+    }
+  
+    .about-text {
+      font-size: 13px;
+    }
+  
+    .section-header h2 {
+      font-size: 24px;
+    }
+  
+    .section-bar {
+      height: 24px;
+    }
+  
+    .paris-text {
+      font-size: 13px;
+    }
+  }
+  
+  /* Small Mobile - 640px and below */
+  @media (max-width: 640px) {
+    .hero-about-section {
+      padding: 48px 0;
+    }
+  
+    .hero-content,
+    .my-paris-container{
+      padding: 0 20px;
+    }
+  
+    .about-card {
+      padding: 28px 20px;
+    }
+  
+    .my-paris-section{
+      padding: 48px 0;
+    }
+  
+    .image-badge {
+      top: 20px;
+      font-size: 12px;
+      padding: 5px 14px;
+    }
+  
+    .my-paris-grid {
+      margin-top: 40px;
+    }
+
+  }
+  
+  /* Extra Small - 480px and below */
+  @media (max-width: 480px) {
+    .hero-about-section {
+      padding: 40px 0;
+    }
+  
+    .hero-content,
+    .my-paris-container{
+      padding: 0 16px;
+    }
+  
+    .about-card {
+      padding: 24px 18px;
+    }
+  
+    .about-title {
+      font-size: 22px;
+    }
+  
+    .about-tagline {
+      font-size: 14px;
+    }
+  
+    .about-text {
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+  
+    .my-paris-section{
+      padding: 40px 0;
+    }
+  
+    .section-header h2 {
+      font-size: 22px;
+    }
+  
+    .paris-text {
+      font-size: 12.5px;
+    }
+  
+    .btn-see-more {
+      padding: 11px 28px;
+      font-size: 13px;
+    }
+  
+    .spec-icon {
+      width: 16px;
+      height: 16px;
+    }
+  
+    .spec-item span {
+      font-size: 13px;
+    }
+  
+  }
+  
+  /* Very Small - 380px and below */
+  @media (max-width: 380px) {
+    .hero-content,
+    .my-paris-container{
+      padding: 0 12px;
+    }
+  
+    .about-card {
+      padding: 20px 16px;
+    }
+  
+    .about-title {
+      font-size: 20px;
+    }
+  
+    .section-header h2 {
+      font-size: 20px;
+    }
+  
+    .eiffel-watercolor-img {
+      max-width: 280px;
+    }
+  
+
+  
+    .no-selection {
+      font-size: 13px;
+    }
+  
+
+  
+    .social-icon-link {
+      width: 26px;
+      height: 26px;
+    }
+  
+    .social-icon-link svg {
+      width: 15px;
+      height: 15px;
+    }
+  }

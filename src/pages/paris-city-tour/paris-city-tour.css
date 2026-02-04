@@ -1,0 +1,425 @@
+.BnrImg {
+    width: 100%;
+    height: 350px;      
+    display: block;   
+    object-fit: cover;
+}
+  /* ============================================================
+     PAGE WRAPPER
+     ============================================================ */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 60px;
+  }
+  
+  /* ============================================================
+     TITLE BLOCK  (centered, orange left bar)
+     ============================================================ */
+  .page-title-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .page-title-wrap h1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .page-title-wrap h1 .title-bar {
+    display: block;
+    width: 4px;
+    height: 30px;
+    background: #f7931e;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .page-title-wrap p {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* ============================================================
+     TWO-COLUMN GRID
+     ============================================================ */
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  
+  /* ============================================================
+     LEFT  –  BOOKING CARD  (#2f2f2f dark grey)
+     ============================================================ */
+  .card {
+    background: #2f2f2f;
+    color: #fff;
+    border-radius: 10px;
+    padding: 28px 24px 24px;
+    font-size: 13px;
+  }
+  
+  /* ── card heading "1/2 Quick Quote" ── */
+  .card-heading {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  
+  /* ── orange note lines ── */
+  .note {
+    font-size: 12px;
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .note .note-label {
+    color: #f7931e;
+    font-weight: 600;
+  }
+  .note .note-text {
+    color: #f7931e;
+  }
+  .note .note-black {
+    color: #ccc;
+  }
+  .notes-block {
+    margin-bottom: 18px;
+  }
+  
+  /* ── generic label ── */
+  .field-label {
+    display: block;
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  .field-label:first-of-type {
+    margin-top: 0;
+  }
+  
+  /* ── select with chevron ── */
+  .select-wrap {
+    position: relative;
+  }
+  .select-wrap select {
+    width: 100%;
+    padding: 10px 36px 10px 12px;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* chevron ∨ drawn with borders */
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #888;
+    border-bottom: 2px solid #888;
+    transform: translateY(-60%) rotate(45deg);
+  }
+  
+  /* ── checkbox row ── */
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+  .checkbox-box {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    background: #2979ff;          /* blue fill */
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  /* white tick inside the checkbox */
+  .checkbox-box::after {
+    content: '';
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-top: -2px;
+  }
+  .checkbox-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .checkbox-text .cb-label {
+    color: #2979ff;
+    font-weight: 600;
+  }
+  .checkbox-text .cb-sub {
+    display: block;
+    color: #999;
+    font-size: 11.5px;
+    margin-top: 2px;
+  }
+  
+  /* ── textarea "Describe your plan" ── */
+  .textarea-wrap {
+    margin-top: 12px;
+  }
+  .textarea-wrap textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 12px;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #333;
+    resize: vertical;
+    outline: none;
+  }
+  .textarea-wrap textarea::placeholder {
+    color: #aaa;
+  }
+  
+  /* ── price-per-hour line (orange) ── */
+  .price-per-hour {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #f7931e;
+    font-weight: 600;
+  }
+  
+  /* ── input with location-pin icon ── */
+  .input-icon-wrap {
+    position: relative;
+  }
+  .input-icon-wrap input {
+    width: 100%;
+    padding: 10px 36px 10px 12px;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #333;
+    outline: none;
+  }
+  .input-icon-wrap input::placeholder {
+    color: #aaa;
+  }
+  /* pin icon (SVG circle + line, dark grey) */
+  .input-icon-wrap .pin-icon {
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+  
+  /* ── additional-charge warning (orange, small italic) ── */
+  .field-warning {
+    font-size: 11px;
+    color: #f7931e;
+    font-style: italic;
+    margin-top: 5px;
+  }
+  
+  /* ── fare row + Book Now button row ── */
+  .fare-btn-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22px;
+    gap: 16px;
+  }
+  .fare-left {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .fare-label {
+    font-size: 13px;
+    color: #ccc;
+    font-weight: 500;
+  }
+  .fare-amount {
+    font-size: 17px;
+    font-weight: 700;
+    color: #00c853;
+  }
+  .btn-book {
+    background: #f7931e;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s;
+  }
+  .btn-book:hover {
+    background: #e07d10;
+  }
+  
+  /* ── footer note inside card ── */
+  .card-note {
+    margin-top: 20px;
+    font-size: 11.5px;
+    color: #999;
+    line-height: 1.55;
+    border-top: 1px solid #444;
+    padding-top: 14px;
+  }
+  .card-note a {
+    color: #f7931e;
+    text-decoration: none;
+  }
+  .card-note a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ============================================================
+     RIGHT  –  INFO PANEL
+     ============================================================ */
+  .info-panel { padding-top: 4px; }
+  
+  .info-panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+  .info-panel h2 .title-bar {
+    display: block;
+    width: 4px;
+    height: 30px;
+    background: #f7931e;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .info-panel > p {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+  }
+  
+  /* ── feature list with circle icons ── */
+  .feature-list {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  /* circle icon wrapper */
+  .feat-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: 1.8px solid #ddd;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .feat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  /* text block */
+  .feat-text strong {
+    display: block;
+    font-size: 14px;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+  .feat-text strong .accent {
+    color: #f7931e;
+    font-weight: 700;
+  }
+  .feat-text span {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.55;
+  }
+  
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  
+  /* ── 860px   stack the two columns ── */
+  @media (max-width: 860px) {
+    .quote-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .card {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .info-panel {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  
+  /* ── 520px   tighter padding ── */
+  @media (max-width: 520px) {
+    .page { padding: 32px 16px 48px; }
+    .card { padding: 20px 18px 18px; }
+    .page-title-wrap h1 { font-size: 1.5rem; }
+    .info-panel h2     { font-size: 1.3rem; }
+    .fare-btn-row      { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-book          { width: 100%; text-align: center; }
+  }
+  
+  /* ── 380px   small phones ── */
+  @media (max-width: 380px) {
+    .page { padding: 24px 12px 40px; }
+    .card { padding: 16px 14px 16px; }
+    .card-heading { font-size: 15px; }
+    .page-title-wrap h1 { font-size: 1.25rem; }
+    .page-title-wrap p  { font-size: 13px; }
+  }
+  
