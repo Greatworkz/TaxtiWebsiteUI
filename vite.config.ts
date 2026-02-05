@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base: "/praise_cars/",
+  base: "/TaxtiWebsiteUI/",
   build: {
     rollupOptions: {
       input: {
