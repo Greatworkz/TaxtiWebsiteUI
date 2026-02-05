@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base: "/",
+  base: "/TaxtiWebsiteUI/",
   build: {
     rollupOptions: {
       input: {
