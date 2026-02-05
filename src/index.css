@@ -7,6 +7,8 @@
    --color-blue: #1D6ADF;  /* #2563eb; */
   --color-orange: #F58300;
   --color-light-ash: #F3F3F3;
+  --color-sub-title: #141C28;
+  --color-green:#0C8703 ;
 
   /* FONTS */
   --font-primary: "Poppins", sans-serif;
@@ -19,6 +21,7 @@ body {
   width: 100%;
   margin: 0;
   height: 100%;
+  background-color: #ffffff;
 }
 
 

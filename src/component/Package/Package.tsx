@@ -50,10 +50,9 @@ const Package = () => {
             Paris <span className="title-disney">Disney</span> Transfers
           </h2>
           <p className="disney-subtitle">
-            Over 18+ customers choose us: Paris to Disneyland Transfers that never stops. With us,
+            Over <b>5+</b> customers choose us: Paris to Disneyland Transfers that never stops. With us,
             you'll never face returned journey even if your flight is running late.
           </p>
-          <p className="disney-team">Team 21</p>
         </div>
 
         {/* Pricing Cards Grid */}
@@ -78,7 +77,7 @@ const Package = () => {
 
         {/* Footer Discount Text */}
         <p className="discount-text">
-          Get discounts for recurring rides
+          *Above prices for economy class
         </p>
 
       </div>

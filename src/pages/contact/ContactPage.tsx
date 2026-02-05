@@ -39,7 +39,7 @@ const ContactPage = () => {
                 <h2>Send us a message</h2>
               </div>
               <p className="form-subtitle">
-                Find Satisfaction to our fast Service, ensure we committed to providing exceptional service and support.
+              your Satisfaction is our top priority, and we are committed to providing exceptional service and support
               </p>
 
               <form className="contact-form">
@@ -84,7 +84,7 @@ const ContactPage = () => {
                 </div>
 
                 <button type="submit" className="btn-submit">
-                  Get Connect
+                  Send Message
                 </button>
               </form>
             </div>
@@ -107,7 +107,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h4>Address</h4>
-              <p>No 33 Rue Camille Desmoulins, 94230 Cachan, France</p>
+              <p>No. 59 Rue Saint-Andre des Arts, 75006 France.</p>
             </div>
 
             {/* Contact Card */}
@@ -118,7 +118,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h4>Contact</h4>
-              <p>If you are not reachable on +33 1 45 89 23 77</p>
+              <p>01 46 33 29 64 , 01 46 33 29 64</p>
             </div>
 
             {/* Email Card */}
@@ -130,7 +130,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h4>Email</h4>
-              <p>We Try to our best. Email us hello@taxiparis.com</p>
+              <p>No. 59 Rue Saint-Andre des Arts, 75006 France.</p>
             </div>
 
             {/* Google Map Card */}
@@ -142,7 +142,7 @@ const ContactPage = () => {
                 </svg>
               </div>
               <h4>Google Map</h4>
-              <p>Discover our precise location</p>
+              <p>Discover our prime location.<br/> <span style={{ color: '#418DFF'}}> View more</span></p>
             </div>
 
           </div>

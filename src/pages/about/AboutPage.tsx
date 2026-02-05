@@ -1,38 +1,47 @@
 import "./AboutPage.css";
-import AboutBanner from '../../assets/about-banner.png';
-import AboutPerson from '../../assets/about-person.svg';
-import DrawParisImage from '../../assets/tower-draw.svg';
+import AboutBanner from "../../assets/about-banner.png";
+import AboutPerson from "../../assets/about-person.svg";
+import DrawParisImage from "../../assets/tower-draw.svg";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 const AboutPage = () => {
- 
-
   return (
     <div className="about-page">
-
       {/* Hero Section with About Card */}
       <section className="hero-about-section">
         <div className="hero-bg">
-          <img 
+          <img
             src={AboutBanner}
-            alt="Paris Transport Service" 
+            alt="Paris Transport Service"
             className="hero-bg-img"
           />
         </div>
-        
+
         <div className="hero-content">
           <div className="about-card">
-            <h1 className="about-title">
-              Paris <span className="title-orange">Bigger</span> Transport
-            </h1>
-            <p className="about-tagline">"Making every Paris journey magical"</p>
-            
-            <p className="about-text">
-              PDAT – now better than ever we have a solution and many people is our key to success. We do the hard work of making 
-              your services and luxury travel cars designed to make your journey it our utmost duty, seamless, comfortable, and memorable. With professional drivers, modern vehicles, and competitive rates, we are committed to 
-              making every trip higher standards of safety, reliability, and service. From 2022 to 2025, we've continuously improved to deliver excellence. Whether it's a trip to Disneyland, a trip to Disneyland, or a 
-              private tour, we've got you covered with unforgettable and worry-free.
-            </p>
-            <img src={AboutPerson} alt="" />
+            <div className="cnt-section">
+              <h1 className="about-title">
+                Paris <span className="title-orange">Disney</span> Transport
+              </h1>
+              <p className="about-tagline">
+                “Making every Paris journey magical”
+              </p>
+
+              <p className="about-text">
+                At PDT – Paris Disney Transport, we specialize in providing
+                reliable taxi services and luxury rental cars designed to make
+                your journeys in and around Paris seamless, comfortable, and
+                memorable. With government approval and only certified, highly
+                experienced drivers, we are committed to maintaining the highest
+                standards of safety and service. Since 2022, we have proudly
+                earned the trust of thousands of travelers, ensuring every ride
+                is smooth, secure, and stress-free. Whether it’s a city
+                transfer, a trip to Disneyland, or a private tour, our goal is
+                to make your travel experience both enjoyable and worry-free.
+              </p>
+            </div>
+            <div className="about-person-img">
+              <img src={AboutPerson} alt="" />
+            </div>
           </div>
         </div>
       </section>
@@ -41,12 +50,11 @@ const AboutPage = () => {
       <section className="my-paris-section">
         <div className="my-paris-container">
           <div className="my-paris-grid">
-            
             {/* Left - Eiffel Tower Image */}
             <div className="paris-image-col">
-              <img 
-                src={DrawParisImage} 
-                alt="Eiffel Tower" 
+              <img
+                src={DrawParisImage}
+                alt="Eiffel Tower"
                 className="eiffel-watercolor-img"
               />
             </div>
@@ -59,21 +67,26 @@ const AboutPage = () => {
               </div>
 
               <p className="paris-text">
-                Paris is not just a city—it's an open-air writer, in lights, cobblestone streets, and the timeless beauty of the Seine. Every corner tells a story, every café invites you to linger, and every moment feels like a chapter of history unfolding. We've spent years of Paris daily life. Better, every corner of Paris with a city. And what better way to experience its beauty than with a journey that is as memorable as the destination itself? That's why we're passionate about making your trips memorable and seamless. Whether you experience the city's magic with our trusted taxi service—where every ride becomes part of your Parisian tale.
+                Paris is not just a city—it is a poem written in lights,
+                cobblestone streets, and timeless charm. From the gentle glow of
+                the Eiffel Tower to the whispers of history along the Seine,
+                every corner of Paris tells a story. And what better way to
+                embrace its beauty than with a journey that is as comfortable as
+                it is memorable? As proud citizens of Paris, we invite you to
+                experience the city’s magic with our trusted taxi service—where
+                every ride becomes part of your Parisian tale.
               </p>
 
               <button className="btn-see-more">See More</button>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Our Fleets Section */}
-     <section>
-      <FleetsPage />
-     </section>
-
+      <section>
+        <FleetsPage />
+      </section>
     </div>
   );
 };

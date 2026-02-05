@@ -3,7 +3,7 @@
    ============================================================ */
    .contact-page {
     width: 100%;
-    background: #f5f5f5;
+    background: #fff;
   }
   
   /* ============================================================
@@ -28,7 +28,7 @@
      ============================================================ */
   .contact-form-section {
     padding: 80px 0 60px;
-    background: #f5f5f5;
+    background: #fff;
   }
   
   .contact-container {
@@ -57,14 +57,15 @@
     height: auto;
     display: block;
     object-fit: cover;
+    border-radius: 20px;
   }
   
   /* Right Column - Form */
   .contact-form-col {
-    background: #fff;
+    /* background: #fff; */
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
   }
   
   .form-header {
@@ -89,9 +90,9 @@
   }
   
   .form-subtitle {
-    font-size: 13.5px;
-    color: #666;
-    line-height: 1.6;
+    font-size: 15px;
+    color: var(--color-black);
+    line-height: 23px;
     margin: 0 0 30px 0;
   }
   
@@ -109,9 +110,9 @@
   }
   
   .form-group label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #444;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-black);
     letter-spacing: 0.2px;
   }
   
@@ -151,10 +152,11 @@
     padding: 14px 32px;
     border-radius: 8px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
     margin-top: 8px;
+    width: fit-content;
   }
   
   .btn-submit:hover {
@@ -171,7 +173,7 @@
      ============================================================ */
   .info-cards-section {
     padding: 0 0 60px;
-    background: #f5f5f5;
+    background: #fff;
   }
   
   .info-cards-grid {
@@ -183,16 +185,17 @@
   .info-card {
     background: #fff;
     padding: 32px 24px;
-    border-radius: 12px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #F1F1F1
   }
   
-  .info-card:hover {
+  /* .info-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-  }
+  } */
   
   .info-icon {
     width: 56px;

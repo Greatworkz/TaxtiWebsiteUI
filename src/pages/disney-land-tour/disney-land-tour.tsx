@@ -1,11 +1,11 @@
-import "./Booking.css";
-import BookingBanner from "../../assets/Banner.svg";
-import HourlyPackage from "../../component/hourly-package/HourlyPackage";
-import FAQSection from "../../component/faq/FAQSection";
+import "./disney-land-tour.css";
+import BookingBanner from "../../assets/disney-tour-banner.png";
 import DriverImage from '../../assets/professional-driver.svg';
 import PaymentImage from '../../assets/payment-mode.svg';
 import FreeCancelImage from '../../assets/free-cancel.svg';
-const Booking = () => {
+import FleetsPage from "../../component/ourFleets/FleetsPage";
+import Package from "../../component/Package/Package";
+const DisneyLandTour = () => {
   return (
     <div>
       <div className="home-container">
@@ -46,10 +46,10 @@ const Booking = () => {
               <div className="fare-row">
                 <span>Total Fare : </span>
                 <strong>10,234.00 €</strong>
-                <button className="quote-btn">Request for Booking</button>
+
+              <button className="quote-btn">Request for Booking</button>
               </div>
 
-              
             </div>
 
             {/* RIGHT – Info */}
@@ -117,18 +117,15 @@ const Booking = () => {
           </div>
         </section>
 
-       
         <section>
-          <FAQSection/>
-        </section>
-        <section>
-          <HourlyPackage />
+            <FleetsPage />
         </section>
 
-
-      
+        <section>
+            <Package />
+        </section>
     </div>
   );
 };
 
-export default Booking;
+export default DisneyLandTour;

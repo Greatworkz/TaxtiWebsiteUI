@@ -8,6 +8,9 @@
     position: relative;
     width: 100%;
 }
+.sub-line{
+  color: var(--color-black);
+}
 /* Optional: Limit height on very large screens so the banner isn't massive */
 @media (min-width: 1440px) {
     .BnrImg {
@@ -21,20 +24,23 @@
     max-width: 1200px;
   }
   
+  
   .quote-grid {
     display: grid;
     grid-template-columns: 480px 1fr;
     gap: 100px;
     align-items: center;
+    
   }
   
   /* Card */
   .quote-card {
     background: #2f2f2f;
     color: #fff;
-    padding: 25px;
+    padding: 18px;
     border-radius: 8px;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
+    margin-top: 20px;
   }
   
   .quote-card label {
@@ -55,19 +61,23 @@
   .row {
     display: flex;
     gap: 12px;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   
   .fare-row {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
-    font-weight: 600;
+    margin: 30px 0 10px;
+    font-weight: 500;
+    color: #fff;
+    align-items: center;
+  }
+  .fare-row strong{
     color: #00c853;
   }
   
   .quote-btn {
-    width: 100%;
+    width: fit-content;
     padding: 14px;
     border: none;
     background: #f7931e;
@@ -114,6 +124,34 @@
   @media (max-width: 900px) {
     .quote-grid {
       grid-template-columns: 1fr;
+    }
+
+    .quote-section {
+      padding: 0px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .quote-section {
+      padding: 0px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .quote-section {
+      padding: 0px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quote-section {
+      padding: 0px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .quote-section {
+      padding: 0px;
     }
   }
   

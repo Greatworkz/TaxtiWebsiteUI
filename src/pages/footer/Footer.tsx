@@ -1,63 +1,8 @@
-
-// import "./Footer.css";
-
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <div className="footer-container">
-
-//         {/* About / Logo */}
-//         <div className="footer-col">
-//           <h3 className="footer-title">Paris Transfers</h3>
-//           <p>
-//             Luxury car hire service in Paris. Private transfers, hourly packages, and sightseeing tours.
-//           </p>
-//         </div>
-
-//         {/* Quick Links */}
-//         <div className="footer-col">
-//           <h4 className="footer-title">Quick Links</h4>
-//           <ul>
-//             <li><a href="#">Home</a></li>
-//             <li><a href="#">Hourly Packages</a></li>
-//             <li><a href="#">Airport Transfers</a></li>
-//             <li><a href="#">Tours</a></li>
-//           </ul>
-//         </div>
-
-//         {/* Contact Info */}
-//         <div className="footer-col">
-//           <h4 className="footer-title">Contact</h4>
-//           <ul>
-//             <li>Email: info@paristransfers.com</li>
-//             <li>Phone: +33 1 23 45 67 89</li>
-//             <li>Address: 12 Rue de Paris, 75001 Paris, France</li>
-//           </ul>
-//         </div>
-
-//         {/* Newsletter */}
-//         <div className="footer-col">
-//           <h4 className="footer-title">Newsletter</h4>
-//           <p>Subscribe to get the latest updates and offers:</p>
-//           <form className="footer-form">
-//             <input type="email" placeholder="Your email" />
-//             <button type="submit">Subscribe</button>
-//           </form>
-//         </div>
-
-//       </div>
-
-//       <div className="footer-bottom">
-//         <p>© {new Date().getFullYear()} Paris Transfers. All rights reserved.</p>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
 import "./Footer.css";
-
+import VisaImage from "../../assets/visa.svg";
+import MasterImage from "../../assets/master-card.svg";
+import StripeImage from "../../assets/stripe.svg";
+import AmericanImage from "../../assets/american-express.svg";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -74,7 +19,7 @@ const Footer = () => {
               <span className="logo-letter logo-t">T</span>
             </div>
             <p className="footer-tagline">
-              From airport transfers to Disneyland Paris and city tours, we ensure comfort, safety, and top-class service.
+            From airport transfers to Disneyland Paris and city tours, we ensure comfort, safety, and top-class service.
             </p>
           </div>
 
@@ -102,13 +47,13 @@ const Footer = () => {
           <div className="footer-col footer-payment">
             <h4 className="footer-title">Payment Method</h4>
             <div className="payment-cards">
-              <img src="/images/mastercard-logo.png" alt="Mastercard" className="payment-logo" />
-              <img src="/images/visa-logo.png" alt="VISA" className="payment-logo" />
-              <img src="/images/stripe-logo.png" alt="Stripe" className="payment-logo" />
-              <img src="/images/amex-logo.png" alt="American Express" className="payment-logo" />
+              <img src={MasterImage} alt="Mastercard" className="payment-logo" />
+              <img src={VisaImage} alt="VISA" className="payment-logo" />
+              <img src={StripeImage} alt="Stripe" className="payment-logo" />
+              <img src={AmericanImage} alt="American Express" className="payment-logo" />
             </div>
             <p className="payment-note">
-              We also provide Payment by cash to the driver options.
+            We also provide Payment by cash to the driver options.
             </p>
           </div>
 

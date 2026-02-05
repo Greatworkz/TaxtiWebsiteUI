@@ -8,18 +8,17 @@ import AboutUsImage from "../../assets/about.svg";
 import HourlyPackage from "../../component/hourly-package/HourlyPackage";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 import PackagePage from "../../component/Package/Package";
+import sefaImage from "../../assets/safe-secure.png";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
-  
+  const [currentStep, setCurrentStep] = useState(2);
+
   // Form data state
   const [formData, setFormData] = useState({
     // Step 1
     pickupDate: "",
-    pickupLocation: "",
-    dropLocation: "",
     pickupTime: "",
-    actualFlightNumber: "",
+    arrivalFlightNumber: "",
     luggage: "",
     numberOfChildren: "",
     // Step 2
@@ -27,38 +26,41 @@ const Home = () => {
     lastName: "",
     email: "",
     phoneNumber: "",
+    paymentmethod: "",
     // Step 3 (confirmation)
-    totalFare: "12,234.00"
+    totalFare: "10,234.00",
   });
 
   const openModal = () => {
     setIsModalOpen(true);
-    setCurrentStep(1);
+    setCurrentStep(2);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setCurrentStep(1);
+    setCurrentStep(2);
     // Reset form if needed
   };
 
   const handleNext = () => {
-    if (currentStep < 3) {
+    if (currentStep <= 2) {
       setCurrentStep(currentStep + 1);
     }
   };
 
   const handlePrevious = () => {
-    if (currentStep > 1) {
+    if (currentStep == 3) {
       setCurrentStep(currentStep - 1);
+    }else{
+      closeModal();
     }
   };
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -122,7 +124,6 @@ const Home = () => {
 
       {/* Container for other sections */}
       <section className="container">
-        
         {/* Our Tour Packages */}
         <div className="TrPckBy">
           <div className="titleBy">
@@ -221,19 +222,20 @@ const Home = () => {
         <HourlyPackage />
       </section>
       <section>
-      <PackagePage />
+        <PackagePage />
+      </section>
+
+      <section className="safe-section">
+        <img src={sefaImage} alt="" className="safe-image" />
       </section>
 
       {/* Booking Modal */}
       {isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-            
             {/* Modal Header */}
             <div className="modal-header">
-              <h3 className="modal-title">
-                Booking Form {currentStep}/3
-              </h3>
+              <h3 className="modal-title">Booking Form {currentStep}/3</h3>
               <button className="modal-close" onClick={closeModal}>
                 ×
               </button>
@@ -241,9 +243,8 @@ const Home = () => {
 
             {/* Modal Body */}
             <div className="modal-body">
-              
               {/* Step 1: Booking Details */}
-              {currentStep === 1 && (
+              {currentStep === 2 && (
                 <div className="modal-step">
                   <div className="form-row">
                     <div className="form-group">
@@ -252,32 +253,6 @@ const Home = () => {
                         type="date"
                         name="pickupDate"
                         value={formData.pickupDate}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Pickup Location</label>
-                      <input
-                        type="text"
-                        name="pickupLocation"
-                        placeholder="Enter pickup location"
-                        value={formData.pickupLocation}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Drop Location</label>
-                      <input
-                        type="text"
-                        name="dropLocation"
-                        placeholder="Enter drop location"
-                        value={formData.dropLocation}
                         onChange={handleInputChange}
                       />
                     </div>
@@ -297,10 +272,10 @@ const Home = () => {
 
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Actual Flight number</label>
+                      <label>Arrival Flight number</label>
                       <select
-                        name="actualFlightNumber"
-                        value={formData.actualFlightNumber}
+                        name="arrivalFlightNumber"
+                        value={formData.arrivalFlightNumber}
                         onChange={handleInputChange}
                       >
                         <option value="">Select flight</option>
@@ -347,7 +322,7 @@ const Home = () => {
               )}
 
               {/* Step 2: Personal Information */}
-              {currentStep === 2 && (
+              {currentStep === 3 && (
                 <div className="modal-step">
                   <div className="form-row form-row-two">
                     <div className="form-group">
@@ -399,31 +374,55 @@ const Home = () => {
                     </div>
                   </div>
 
+                  <div className="form-row">
+                  <div className="form-group">
+                      <label>Payment Method</label>
+                      <select
+                        name="paymentmethod"
+                        value={formData.paymentmethod}
+                        onChange={handleInputChange}
+                      >
+                        <option value="0">Select</option>
+                        <option value="0">Cash</option>
+                        <option value="1">Online</option>
+                      </select>
+                      </div>
+                    </div>
+
+                    <div className="summary-row">
+                      <span className="TotalFare">Total Fare  :</span>
+                      <span >
+                        <span className="total-amount">{formData.totalFare} €{" "}</span> (all taxes included)
+                      </span>
+                    </div>
+
                   <div className="form-info-box">
-                    <p>
-                      <strong>Note:</strong> Please ensure all details are
-                      correct before proceeding.
+                    <p> *We can generally accept all bookings up to 12 hours before the time of your transfer. For late booking please contact our customer service +33 624 891 938
                     </p>
                   </div>
                 </div>
               )}
 
               {/* Step 3: Confirmation */}
-              {currentStep === 3 && (
+              {/* {currentStep === 3 && (
                 <div className="modal-step">
                   <div className="confirmation-box">
                     <h4>Booking Summary</h4>
-                    
+
                     <div className="summary-row">
                       <span>Pickup:</span>
-                      <strong>{formData.pickupLocation || "Not specified"}</strong>
+                      <strong>
+                        {formData.pickupLocation || "Not specified"}
+                      </strong>
                     </div>
-                    
+
                     <div className="summary-row">
                       <span>Drop:</span>
-                      <strong>{formData.dropLocation || "Not specified"}</strong>
+                      <strong>
+                        {formData.dropLocation || "Not specified"}
+                      </strong>
                     </div>
-                    
+
                     <div className="summary-row">
                       <span>Date & Time:</span>
                       <strong>
@@ -431,51 +430,57 @@ const Home = () => {
                         {formData.pickupTime || "Not specified"}
                       </strong>
                     </div>
-                    
+
                     <div className="summary-row">
                       <span>Passenger:</span>
                       <strong>
                         {formData.firstName} {formData.lastName}
                       </strong>
                     </div>
-                    
+
                     <div className="summary-row summary-total">
                       <span>Total Fare:</span>
                       <strong className="total-amount">
-                        {formData.totalFare} € <span className="tax-note">(all taxes included)</span>
+                        {formData.totalFare} €{" "}
+                        <span className="tax-note">(all taxes included)</span>
                       </strong>
                     </div>
                   </div>
 
                   <div className="form-info-box">
                     <p>
-                      By clicking "Book Now", you agree to our Terms & Conditions
-                      and Privacy Policy.
+                      By clicking "Book Now", you agree to our Terms &
+                      Conditions and Privacy Policy.
                     </p>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Modal Footer with Buttons */}
             <div className="modal-footer">
-              {currentStep > 1 && (
-                <button className="btn-modal btn-previous" onClick={handlePrevious}>
+              {currentStep >= 1 && (
+                <button
+                  className="btn-modal modal-btn-previous"
+                  onClick={handlePrevious}
+                >
                   Previous
                 </button>
               )}
-              
-              {currentStep < 3 ? (
-                <button className="btn-modal btn-next" onClick={handleNext}>
+
+              {currentStep == 2 ? (
+                <button className="btn-modal modal-btn-next" onClick={handleNext}>
                   Next
                 </button>
               ) : (
-                <button className="btn-modal btn-book" onClick={handleFinalSubmit}>
+                <button
+                  className="btn-modal modal-btn-book"
+                  onClick={handleFinalSubmit}
+                >
                   Book Now
                 </button>
               )}
             </div>
-
           </div>
         </div>
       )}

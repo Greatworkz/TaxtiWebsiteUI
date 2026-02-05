@@ -134,21 +134,21 @@
 }
 
 .logo-p {
-  color: #1a1a1a;
+  color: #141C28;
 }
 
 .logo-d {
-  color: #3b5998; /* Blue matching screenshot */
+  color: var(--color-blue); /* Blue matching screenshot */
 }
 
 .logo-t {
-  color: #f7931e; /* Orange */
+  color: #141C28; /* Orange */
 }
 
 .footer-tagline {
   font-size: 13.5px;
-  line-height: 1.65;
-  color: #555;
+  line-height: 25px;
+  color: #141C28;
   margin: 0;
 }
 
@@ -162,8 +162,8 @@
 
 .footer-title {
   font-size: 15px;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-weight: 500;
+  color: #141C28;
   margin: 0 0 16px 0;
   letter-spacing: 0.2px;
 }
@@ -182,8 +182,8 @@
 }
 
 .footer-list a {
-  font-size: 13.5px;
-  color: #444;
+  font-size: 14px;
+  color: #141C28;
   text-decoration: none;
   transition: color 0.2s ease;
   display: inline-block;
@@ -210,16 +210,16 @@
 }
 
 .payment-logo {
-  height: 30px;
+  height: 20px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 
 .payment-note {
-  font-size: 12.5px;
+  font-size: 14px;
   line-height: 1.6;
-  color: #f7931e;
+  color: var(--color-orange);
   margin: 0;
   font-style: italic;
 }
@@ -398,7 +398,7 @@
   }
   
   .payment-logo {
-    height: 26px;
+    height: 16px;
   }
   
   .payment-note {
@@ -438,7 +438,7 @@
   }
   
   .payment-logo {
-    height: 24px;
+    height: 14px;
   }
   
   .footer-social {
