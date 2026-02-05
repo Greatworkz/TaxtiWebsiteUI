@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base: "/",
+  base: "/praise_cars/",
   build: {
     rollupOptions: {
       input: {
