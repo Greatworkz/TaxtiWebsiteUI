@@ -7,11 +7,11 @@ export default defineConfig({
     react(),
   ],
   base: "/TaxtiWebsiteUI/",
-  build: {
-    rollupOptions: {
-      input: {
-        main: 'index.html',
-      }
-    }
-  }
+  // build: {
+  //   rollupOptions: {
+  //     input: {
+  //       main: 'index.html',
+  //     }
+  //   }
+  // }
 })
