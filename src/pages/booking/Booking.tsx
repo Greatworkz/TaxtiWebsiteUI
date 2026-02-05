@@ -29,7 +29,7 @@ const Booking = () => {
               </select>
 
               <div className="row">
-                <div>
+                <div style={{ width: '50%'}}>
                   <label>Passengers</label>
                   <select>
                     <option>5</option>
