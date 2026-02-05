@@ -1,6 +1,5 @@
 import "./Service.css";
 import BookingBanner from "../../assets/Banner.svg";
-import FAQSection from "../../component/faq/FAQSection";
 import ParisAirportTourImage from "../../assets/paris-airport-transport.svg";
 import DisnyImage from "../../assets/disney-transport.svg";
 import ParisTourImage from "../../assets/paris-city-tour.svg";

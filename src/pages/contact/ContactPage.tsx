@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import "./ContactPage.css";
 import BannerImage from '../../assets/contactBanner.png';
 import CustomerCareImage from '../../assets/customercare.svg';
