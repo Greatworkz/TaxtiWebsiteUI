@@ -3,6 +3,9 @@ import VisaImage from "../../assets/visa.svg";
 import MasterImage from "../../assets/master-card.svg";
 import StripeImage from "../../assets/stripe.svg";
 import AmericanImage from "../../assets/american-express.svg";
+import YoutubeImage from "../../assets/youtube.svg";
+import InstaImage from "../../assets/insta.svg";
+import Fbimage from '../../assets/FB.svg';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -68,29 +71,9 @@ const Footer = () => {
           </p>
           
           <div className="footer-social">
-            {/* YouTube */}
-            <a href="#youtube" className="social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="5" width="20" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M10 9l5 3-5 3V9z" fill="currentColor"/>
-              </svg>
-            </a>
-            
-            {/* Facebook */}
-            <a href="#facebook" className="social-link" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-            
-            {/* Instagram */}
-            <a href="#instagram" className="social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.5"/>
-                <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-              </svg>
-            </a>
+            <img src={YoutubeImage} className="social-link" alt="" />
+            <img src={Fbimage} className="social-link" alt="" />
+            <img src={InstaImage} className="social-link" alt="" />
           </div>
         </div>
       </div>

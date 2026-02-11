@@ -11,7 +11,7 @@
 }
 
 .navbar__logo img {
-  height: 30px;
+  height: 25px;
   object-fit: contain;
   /* z-index: 1000; */
 }
@@ -29,14 +29,15 @@
 
 .navbar__menu li {
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
   transition: color 0.2s ease;
 }
 
 .navbar__menu a {
   text-decoration: none;
-  color: black;
+  color: #777777;
   transition: color 0.3s ease;
+  font-size: 16px;
 }
 
 .navbar__menu a:hover {
@@ -45,8 +46,9 @@
 
 .navbar__menu a.active {
   font-weight: 600;
-  border-bottom: 2px solid black;
-  padding-bottom: 4px;
+  /* border-bottom: 2px solid black; */
+  /* padding-bottom: 4px; */
+  color: var(--color-sub-title);
 }
 
 /* Hamburger Menu Button */

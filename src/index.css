@@ -72,7 +72,7 @@ textarea:focus {
 
 
 .container {
-  width: 80%;
+  width: 85%;
   margin: 20px auto 0px;
 }
 
@@ -84,14 +84,13 @@ textarea:focus {
 
 .Title-line {
   width: 5px;
-  height: 47px;
+  /* height: 47px; */
   background-color: var(--color-orange);
   border-radius: 20px;
 }
 
 .title {
-  margin: 0;
-  font-size: 2.5rem;
+  margin: 0;  
   font-weight: 500;
   color: #000;
 }
@@ -99,3 +98,4 @@ textarea:focus {
 .clrBlue{
   color: var(--color-blue);
 }
+

@@ -43,6 +43,7 @@ const Booking = () => {
                 </div>
               </div>
 
+              <div className="divider"></div>
               <div className="fare-row">
                 <span>Total Fare : </span>
                 <strong>10,234.00 €</strong>

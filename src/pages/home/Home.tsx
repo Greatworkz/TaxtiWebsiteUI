@@ -182,9 +182,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
 
+      <section className="AbtBy">
         {/* About Us */}
-        <div className="AbtBy">
+        <div className="AbtBy-Sub">
           <div className="titleBy">
             <span className="Title-line"></span>
             <p className="title">About Us</p>

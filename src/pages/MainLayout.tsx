@@ -10,7 +10,7 @@ const MainLayout = () => {
         <Navbar />
       </header>
 
-      <main style={{ paddingTop: "70px", flex: 1 }}>
+      <main>
         <Outlet />
       </main>
 

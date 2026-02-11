@@ -8,9 +8,9 @@
   }
   
   .fleets-container {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
-    padding: 0 40px;
+    /* padding: 0 40px; */
   }
   
   /* Section Header */
@@ -40,8 +40,9 @@
   .fleets-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin: 40px 0 32px;
+    gap: 2px;
+    /* margin: 40px 0 32px; */
+    padding: 25px 25px 25px 0px;
     
   }
   
@@ -60,13 +61,14 @@
   .fleet-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    /* background-color: var(--color-blue); */
   }
   
   /* Image */
   .fleet-image-wrap {
     width: 100%;
-    height: 200px;
-    background: #fafafa;
+    height: 250px;
+    /* background: #fafafa; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +83,7 @@
   
   /* Name */
   .fleet-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: #141C28;
     text-align: left;
@@ -89,12 +91,12 @@
   }
   
   /* Specs */
-  .fleet-specs {
+  /* .fleet-specs {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 20px;
-    padding: 0 16px 16px;
+    padding: 0 16px 25px;
   }
   
   .spec-item {
@@ -114,12 +116,38 @@
     font-weight: 600;
     color: #3F3F3F;
   }
+  .spec-btn{
+    align-items: end;
+  } */
+
+  .fleet-specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 12px 25px;
+  }
+  
+  .spec-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .spec-btn {
+    margin-left: auto;
+  }
   
   /* Book Button */
   .fleet-book-link {
     display: block;
     text-align: center;
-    padding: 12px 16px;
+    padding: 10px 30px;
     background: #fafafa;
     color: #141C28;
     text-decoration: none;
@@ -128,8 +156,13 @@
     transition: background 0.2s ease, color 0.2s ease;
     margin-top: auto;
     border: 1px solid #BDBDBD;
-    border-radius: 20px;
+    border-radius: 65px;
   }
+
+
+
+
+  
   
   .fleet-book-link:hover {
     background: var(--color-blue);
@@ -155,8 +188,8 @@
   }
   
   .BtmTxt span img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
   
   /* ============================================================
@@ -180,6 +213,7 @@
       max-width: 400px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 10px;
     }
   
     .fleet-image-wrap {

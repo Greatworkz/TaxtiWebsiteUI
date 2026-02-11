@@ -60,13 +60,27 @@
   .pricing-card {
     background: #FAF9F9;
     /* border-radius: 12px; */
-    padding: 32px 24px 28px;
-    /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); */
+    padding: 32px 30px 28px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    border: 1px solid #B2B1B1
+    border-top: 1px dotted #B2B1B1;
+    border-bottom: 1px dotted #B2B1B1;
   }
+
+  /* First item */
+ .pricing-card:first-child {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 1px dotted #B2B1B1;
+}
+
+/* Last item */
+ .pricing-card:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px dotted #B2B1B1;
+}
   
   /* .pricing-card:hover {
     transform: translateY(-4px);
@@ -136,10 +150,10 @@
   }
   
   .btn-book-now:hover {
-    background: var(--color-blue);
+    background: var(--color-black);
     color: #fff;
-    transform: translateY(-1px);
-    border: none;
+    /* transform: translateY(-1px); */
+    /* border: none; */
   }
   
   .btn-book-now:active {

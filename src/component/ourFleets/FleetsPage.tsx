@@ -1,4 +1,3 @@
-
 // import "./FleetsPage.css";
 
 // // Replace these with your actual imports
@@ -79,8 +78,6 @@
 
 // export default FleetsPage;
 
-
-
 import "./FleetsPage.css";
 import SedanImage from "../../assets/sedan.svg";
 import ComfortSedanImage from "../../assets/confort-sedan.svg";
@@ -98,68 +95,91 @@ const FleetsPage = () => {
       name: "Sedan",
       image: SedanImage,
       passengers: 4,
-      luggage: 2
+      luggage: 2,
     },
     {
       name: "Comfort Sedan",
       image: ComfortSedanImage,
       passengers: 4,
-      luggage: 3
+      luggage: 3,
     },
     {
       name: "Economy Class Van",
       image: EconomyVanImage,
       passengers: 8,
-      luggage: 8
+      luggage: 8,
     },
     {
       name: "Business Class Van",
       image: BussinessVanImage,
       passengers: 8,
-      luggage: 8
-    }
+      luggage: 8,
+    },
   ];
 
   return (
-    <div>
-
-      <section className="fleets-section">
+    <div className="fleets-section">
+      <section className="container">
         <div className="fleets-container">
-          
-          <div className="section-header">
+          {/* <div className="section-header">
             <span className="section-bar-flt"></span>
             <h2>Our fleets</h2>
+          </div> */}
+
+          <div className="titleBy">
+            <span className="Title-line"></span>
+            <p className="title">Our fleets</p>
           </div>
 
           <div className="fleets-grid">
-            
             {fleets.map((fleet, index) => (
               <div key={index} className="fleet-card">
-                 <h4 className="fleet-name">{fleet.name}</h4>
+                <h4 className="fleet-name">{fleet.name}</h4>
                 <div className="fleet-image-wrap">
-                  <img 
-                    src={fleet.image} 
-                    alt={fleet.name} 
+                  <img
+                    src={fleet.image}
+                    alt={fleet.name}
                     className="fleet-img"
                   />
                 </div>
-                
-               
-                
-                <div className="fleet-specs">
+
+                {/* <div className="fleet-specs">
                   <div className="spec-item">
                     <img src={ContactImage} alt="" />
                     <span>{fleet.passengers}</span>
                   </div>
-                  
+
                   <div className="spec-item">
                     <img src={LuggageImage} alt="" />
                     <span>{fleet.luggage}</span>
                   </div>
-                  <a href="#book" className="fleet-book-link">Book now</a>
-                </div>
 
-                
+                  <div className="spec-btn">
+                    <a href="#book" className="fleet-book-link">
+                      Book now
+                    </a>
+                  </div>
+                </div> */}
+
+                <div className="fleet-specs">
+                  <div className="spec-left">
+                    <div className="spec-item">
+                      <img src={ContactImage} alt="" />
+                      <span>{fleet.passengers}</span>
+                    </div>
+
+                    <div className="spec-item">
+                      <img src={LuggageImage} alt="" />
+                      <span>{fleet.luggage}</span>
+                    </div>
+                  </div>
+
+                  <div className="spec-btn">
+                    <a href="#book" className="fleet-book-link">
+                      Book now
+                    </a>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -173,10 +193,8 @@ const FleetsPage = () => {
               <img src={MusicImage} alt="Music System" />
             </span>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 };

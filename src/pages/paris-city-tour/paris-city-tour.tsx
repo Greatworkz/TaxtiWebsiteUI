@@ -47,8 +47,8 @@ const ParisCityTour = () => {
   return (
     <div className="home-container">
       <img className="BnrImg" src={BannerImage} alt="" />
-      <div className="page">
-        <section className="background-img">
+      <div className="background-img">
+        <section className="page">
           <div className="page-title-wrap">
             <h1>
               <span className="title-bar"></span> Paris City Tour
@@ -153,6 +153,7 @@ const ParisCityTour = () => {
                   outside the paris
                 </div>
 
+                <div className="divider"></div>
                 <div className="fare-btn-row">
                   <div className="fare-left">
                     <span className="fare-label">Total Fare :</span>

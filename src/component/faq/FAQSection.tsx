@@ -101,7 +101,9 @@ const FAQSection = () => {
                     <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
+                
                 <div className="faq-answer">
+                <div className="faq-divider"></div>
                   <p>{faq.answer}</p>
                 </div>
               </div>

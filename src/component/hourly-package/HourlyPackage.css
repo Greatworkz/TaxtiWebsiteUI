@@ -41,7 +41,7 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     width: 100%;
-    max-width: 1200px;
+    width: 85%;
     margin: 0 auto;
   }
   
@@ -55,7 +55,9 @@
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.3s;
+    padding: 4px 4px 30px;
   }
+  
   
   .HrPak-card:hover {
     transform: translateY(-5px);
@@ -70,11 +72,12 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 6px;
   }
   
   /* Card content */
   .HrCrd-Cnt {
-    padding: 15px;
+    padding: 20px 16px;
     color: #141C28;
     flex: 1;
   }
@@ -82,7 +85,7 @@
   .HrPak-name {
     font-weight: 500;
     font-size: 22px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
   
   .HrTrpAmt {
@@ -94,21 +97,20 @@
   
   /* Footer with button */
   .HrPak-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
+    margin-top: 35px;
   }
   
   .HrPak-book-btn {
     font-weight: 500;
     font-size: 16px;
     border: 1px solid #BDBDBD;
-    border-radius: 66px;
+    border-radius: 46px;
     background-color: #000000;
     color: #fff;
-    padding: 8px 20px;
+    padding: 8px 35px;
     cursor: pointer;
     transition: 0.3s;
+    width: auto;
   }
   
   .HrPak-book-btn:hover {

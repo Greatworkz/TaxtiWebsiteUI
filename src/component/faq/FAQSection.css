@@ -8,7 +8,8 @@
     }
     
     .faq-container {
-      max-width: 1200px;
+      /* max-width: 1200px; */
+      width: 85%;
       margin: 0 auto;
       padding: 0 40px;
     }
@@ -36,8 +37,8 @@
     }
     
     .faq-header h3 {
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 40px;
+      font-weight: 500;
       color: #1a1a1a;
       margin: 0;
     }
@@ -48,7 +49,10 @@
       flex-direction: column;
       gap: 14px;
     }
-    
+    .faq-divider {
+      border-top: 1px dashed #BEBEBE;
+      padding: 10px 10px;
+    }
     .faq-item {
       background: #fff;
       border-radius: 6px;
@@ -108,7 +112,7 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
+      /* transition: max-height 0.4s ease, padding 0.4s ease; */
     }
     
     .faq-item.active .faq-answer {

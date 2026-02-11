@@ -1,8 +1,12 @@
 .BnrImg {
     width: 100%;
-    height: 350px;      
+    height: 460px;      
     display: block;   
     object-fit: cover;
+}
+.divider {
+  border-top: 2px dotted #FFFFFF33;
+  margin: 20px 0;
 }
 
 .home-container {
@@ -38,15 +42,15 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: var(--color-black);
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--color-sub-title);
     line-height: 35px;
   }
   .page-title-wrap h1 .title-bar {
     display: block;
-    width: 4px;
-    height: 30px;
+    width: 5px;
+    height: 35px;
     background: var(--color-blue);
     border-radius: 2px;
     flex-shrink: 0;
@@ -330,16 +334,15 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-weight: 500;
+    color: var(--color-sub-title);
     line-height: 1.2;
-    font-size: 25px;
+    font-size: 40px;
   }
   .info-panel h2 .title-bar {
     display: block;
-    width: 4px;
-    height: 30px;
+    width: 5px;
+    height: 35px;
     background: #f7931e;
     border-radius: 2px;
     flex-shrink: 0;
