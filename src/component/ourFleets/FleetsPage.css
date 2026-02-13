@@ -43,7 +43,6 @@
     gap: 2px;
     /* margin: 40px 0 32px; */
     padding: 25px 25px 25px 0px;
-    
   }
   
   /* Fleet Card */
@@ -53,10 +52,10 @@
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
+    display: grid;
     flex-direction: column;
     border: 1px solid #DADADA;
-    padding: 15px 15px 20px 15px;
+    padding: 3px ;
   }
   
   .fleet-card:hover {
@@ -125,7 +124,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px 12px 25px;
+    padding: 0 16px 20px 16px;
   }
   
   .spec-left {
@@ -199,9 +198,10 @@
   
   @media (max-width: 1024px) {
     .fleets-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2,1fr);
       gap: 20px;
     }
+    
   }
   
   @media (max-width: 640px) {
@@ -222,6 +222,38 @@
     }
   
   }
+
+  @media (max-width: 740px) {
+    .fleet-specs {
+      display: block !important;
+  }
+  .fleet-card{
+      padding: 20px !important;
+      /* width: 100%; */
+  }
+  .spec-left{
+      justify-content: center;
+      margin-bottom: 20px;
+  }
+
+  .fleets-section {
+      padding: 30px 0 40px 0;
+  }
+
+  .fleet-image-wrap{
+    padding: 10px;
+  }
+
+  .BtmTxt{
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .BtmTxt span img {
+    width: 15px;
+    height: 15px;
+  }
+}
   
   @media (max-width: 480px) {
     .fleet-specs {

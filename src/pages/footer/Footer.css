@@ -281,7 +281,7 @@
 /* Tablet - 1024px and below */
 @media (max-width: 1024px) {
   .footer-container {
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     gap: 36px 48px;
     padding: 0 32px;
   }
@@ -301,10 +301,21 @@
 
 /* Mobile - 768px and below */
 @media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr 1fr;
+    .footer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px 36px;
     padding: 0 24px;
+  }
+
+  /* Brand full width */
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  /* Payment full width */
+  .footer-payment {
+    grid-column: 1 / -1;
   }
   
   .footer-main {
@@ -421,8 +432,21 @@
 /* Very Small - 380px and below */
 @media (max-width: 380px) {
   .footer-container {
-    padding: 0 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    padding: 0 12px;
+    
+  }
+
+  /* Brand full width */
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  /* Payment full width */
+  .footer-payment {
+    grid-column: 1 / -1;
   }
   
   .footer-main {

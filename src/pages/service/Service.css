@@ -188,7 +188,7 @@
   /* Mobile Landscape - 900px and below */
   @media (max-width: 900px) {
     .services-banner {
-      height: 120px;
+      height: 300px;
     }
   
     .services-container {
@@ -212,7 +212,7 @@
     }
   
     .services-banner {
-      height: 100px;
+      height: 300px;
     }
   
     .services-container {
@@ -241,7 +241,7 @@
     }
   
     .services-banner {
-      height: 90px;
+      height: 300px;
     }
   
     .services-container {

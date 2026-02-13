@@ -311,7 +311,7 @@
   /* Small Mobile - 640px and below */
   @media (max-width: 640px) {
     .contact-hero {
-      height: 180px;
+      height: 300px;
     }
   
     .contact-form-section {
