@@ -344,7 +344,7 @@
   /* Extra Small - 480px and below */
   @media (max-width: 480px) {
     .contact-hero {
-      height: 160px;
+      height: 300px;
     }
   
     .contact-form-section {
@@ -406,7 +406,7 @@
   }
   
   /* Very Small - 380px and below */
-  @media (max-width: 380px) {
+  /* @media (max-width: 380px) {
     .contact-hero {
       height: 140px;
     }
@@ -432,4 +432,4 @@
     }
   
     
-  }
+  } */

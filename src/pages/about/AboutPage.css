@@ -363,6 +363,7 @@
   
     .about-card {
       padding: 24px 18px;
+      display: block;
     }
   
     .about-title {
@@ -407,7 +408,7 @@
   }
   
   /* Very Small - 380px and below */
-  @media (max-width: 380px) {
+  /* @media (max-width: 380px) {
     .hero-content,
     .my-paris-container{
       padding: 0 12px;
@@ -446,4 +447,4 @@
       width: 15px;
       height: 15px;
     }
-  }
+  } */

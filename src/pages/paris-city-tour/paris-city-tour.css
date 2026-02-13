@@ -386,7 +386,7 @@
   /* text block */
   .feat-text strong {
     display: block;
-    font-size: 16px;
+    font-size: 17px;
     color: #1a1a1a;
     margin-bottom: 2px;
     font-weight: 500;
@@ -394,10 +394,10 @@
   .feat-text strong .accent {
     color: #f7931e;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
   }
   .feat-text span {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-black);
     line-height: 1.55;
   }
@@ -413,8 +413,8 @@
       gap: 36px;
     }
     .card {
-      max-width: 480px;
-      width: 100%;
+        max-width: 480px;
+        width: 100%;
       margin: 0 auto;
     }
     .info-panel {
@@ -427,7 +427,7 @@
   /* ── 520px   tighter padding ── */
   @media (max-width: 520px) {
     .page { padding: 32px 16px 48px; }
-    .card { padding: 20px 18px 18px; }
+    .card { padding: 20px 18px 18px; width: fit-content; }
     .page-title-wrap h1 { font-size: 1.5rem; }
     .info-panel h2     { font-size: 1.3rem; }
     .fare-btn-row      { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -437,7 +437,7 @@
   /* ── 380px   small phones ── */
   @media (max-width: 380px) {
     .page { padding: 24px 12px 40px; }
-    .card { padding: 16px 14px 16px; }
+    .card { padding: 16px 14px 16px; width: fit-content; }
     .card-heading { font-size: 15px; }
     .page-title-wrap h1 { font-size: 1.25rem; }
     .page-title-wrap p  { font-size: 13px; }

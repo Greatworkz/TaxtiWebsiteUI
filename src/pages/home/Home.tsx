@@ -103,7 +103,7 @@ const Home = () => {
             <input type="text" placeholder="Drop Location" />
           </div>
 
-          <div className="TpBkCrd__item_pass">
+          <div className="TpBkCrd__item">
             <label>Passengers</label>
             <select>
               <option value="1">1</option>

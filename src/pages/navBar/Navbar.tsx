@@ -22,36 +22,51 @@ const Navbar = () => {
 
       {/* Hamburger Menu Button */}
       <div>
-      <button 
-        className={`navbar__hamburger ${isMenuOpen ? 'active' : ''}`}
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <button
+          className={`navbar__hamburger ${isMenuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
 
       {/* Navigation Menu */}
-      <ul className={`navbar__menu ${isMenuOpen ? 'active' : ''}`}>
+      <ul className={`navbar__menu ${isMenuOpen ? "active" : ""}`}>
+        <button className="navbar__close" onClick={closeMenu}>
+          ✕
+        </button>
         <li>
-          <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/" onClick={closeMenu}>
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/booking" onClick={closeMenu}>Booking</NavLink>
+          <NavLink to="/booking" onClick={closeMenu}>
+            Booking
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/service" onClick={closeMenu}>Service</NavLink>
+          <NavLink to="/service" onClick={closeMenu}>
+            Service
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/pricing" onClick={closeMenu}>Pricing</NavLink>
+          <NavLink to="/pricing" onClick={closeMenu}>
+            Pricing
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
+          <NavLink to="/contact" onClick={closeMenu}>
+            Contact
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/about" onClick={closeMenu}>About</NavLink>
+          <NavLink to="/about" onClick={closeMenu}>
+            About
+          </NavLink>
         </li>
       </ul>
 

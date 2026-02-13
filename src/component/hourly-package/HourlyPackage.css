@@ -1,185 +1,197 @@
 /* Yellow header */
 .HrCntBy {
-    height: auto; /* let height adjust for small screens */
-    background-color: #FCA311;
-    padding: 60px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    height: 300px;
+  height: auto;
+  /* let height adjust for small screens */
+  background-color: #FCA311;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  height: 300px;
+}
+
+.HrTle {
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  margin-bottom: 15px;
+}
+
+.HrCnt {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0 auto;
+  /* max-width: 600px; */
+}
+
+/* Cards container overlaps yellow header */
+.HrPakcontainer {
+  position: relative;
+  z-index: 2;
+  margin-top: -170px;
+  /* Adjust overlap for responsiveness */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Grid for cards */
+.HrPak-grid {
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  gap: 15px;
+  width: 100%;
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* Individual card */
+.HrPak-card {
+  background: #fff;
+  border: 1px solid #DADADA;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s;
+  padding: 4px 4px 30px;
+  max-width: 80%;
+}
+
+
+.HrPak-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card image */
+.HrPak-ImgBy {
+  width: 100%;
+}
+
+.HrPak-img {
+  width: 100%;
+  /* height: 200px; */
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Card content */
+.HrCrd-Cnt {
+  padding: 0px 16px 10px 16px;
+  color: #141C28;
+  flex: 1;
+  line-height: 30px;
+}
+
+.HrPak-name {
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.HrTrpAmt {
+  font-weight: 500;
+  font-size: 16px;
+  color: #0CB800;
+  margin-left: 10px;
+}
+
+/* Footer with button */
+.HrPak-footer {
+  margin-top: 35px;
+}
+
+.HrPak-book-btn {
+  font-weight: 500;
+  font-size: 16px;
+  border: 1px solid #BDBDBD;
+  border-radius: 46px;
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 35px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: auto;
+}
+
+.HrPak-book-btn:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .HrCntBy {
+    padding: 50px 20px;
   }
-  
+
   .HrTle {
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 1.2;
-    letter-spacing: 0.2px;
-    margin-bottom: 15px;
+    font-size: 2rem;
   }
-  
+
   .HrCnt {
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin: 0 auto;
-    /* max-width: 600px; */
+    font-size: 1.1rem;
   }
-  
-  /* Cards container overlaps yellow header */
-  .HrPakcontainer {
-    position: relative;
-    z-index: 2;
-    margin-top: -170px; /* Adjust overlap for responsiveness */
-    padding: 20px;
-    display: flex;
+
+  /* .HrPak-img {
+      height: 180px;
+    } */
+}
+
+@media (max-width: 768px) {
+  .HrCntBy {
+    padding: 40px 15px;
+  }
+
+  .HrTle {
+    font-size: 1.75rem;
+  }
+
+  .HrCnt {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* .HrPak-img {
+      height: 150px;
+    } */
+
+  .HrPak-footer {
     justify-content: center;
   }
-  
-  /* Grid for cards */
-  .HrPak-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    width: 100%;
-    width: 85%;
-    margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .HrCntBy {
+    padding: 30px 10px;
   }
-  
-  /* Individual card */
-  .HrPak-card {
-    background: #fff;
-    border: 1px solid #DADADA;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.3s;
-    padding: 4px 4px 30px;
+
+  .HrTle {
+    font-size: 1.5rem;
   }
-  
-  
-  .HrPak-card:hover {
-    transform: translateY(-5px);
+
+  .HrCnt {
+    font-size: 0.95rem;
   }
-  
-  /* Card image */
-  .HrPak-ImgBy {
-    width: 100%;
-  }
-  
-  .HrPak-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-  
-  /* Card content */
-  .HrCrd-Cnt {
-    padding: 20px 16px;
-    color: #141C28;
-    flex: 1;
-  }
-  
-  .HrPak-name {
-    font-weight: 500;
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-  
-  .HrTrpAmt {
-    font-weight: 500;
-    font-size: 16px;
-    color: #0CB800;
-    margin-left: 10px;
-  }
-  
-  /* Footer with button */
-  .HrPak-footer {
-    margin-top: 35px;
-  }
-  
-  .HrPak-book-btn {
-    font-weight: 500;
-    font-size: 16px;
-    border: 1px solid #BDBDBD;
-    border-radius: 46px;
-    background-color: #000000;
-    color: #fff;
-    padding: 8px 35px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: auto;
-  }
-  
-  .HrPak-book-btn:hover {
-    background-color: #333;
-    border-color: #333;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .HrCntBy {
-      padding: 50px 20px;
-    }
-  
-    .HrTle {
-      font-size: 2rem;
-    }
-  
-    .HrCnt {
-      font-size: 1.1rem;
-    }
-  
-    .HrPak-img {
-      height: 180px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .HrCntBy {
-      padding: 40px 15px;
-    }
-  
-    .HrTle {
-      font-size: 1.75rem;
-    }
-  
-    .HrCnt {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-  
-    .HrPak-img {
-      height: 150px;
-    }
-  
-    .HrPak-footer {
-      justify-content: center;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .HrCntBy {
-      padding: 30px 10px;
-    }
-  
-    .HrTle {
-      font-size: 1.5rem;
-    }
-  
-    .HrCnt {
-      font-size: 0.95rem;
-    }
-  
-    .HrPak-img {
+
+  /* .HrPak-img {
       height: 120px;
     }
-  
-    .HrPak-book-btn {
-      padding: 6px 15px;
-      font-size: 14px;
-    }
+   */
+
+  .HrPak-grid {
+    display: grid;
+    width: 100% ;
   }
-  
+
+  .HrPak-card {
+    max-width: 100%;
+  }
+  .HrPak-book-btn {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+}

@@ -37,15 +37,17 @@
   .quote-card {
     background: #2f2f2f;
     color: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     /* height: -webkit-fill-available; */
-    margin-top: 20px;
+    margin-top: 40px;
   }
-  
+  .quote-card label:nth-child(1) {
+    margin-top: 8px;
+  }
   .quote-card label {
     font-size: 13px;
-    margin-top: 12px;
+    margin-top: 15px;
     display: block;
   }
   
@@ -61,7 +63,7 @@
   .row {
     display: flex;
     gap: 12px;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
   
   .fare-row {
@@ -151,6 +153,16 @@
   @media (max-width: 480px) {
     .quote-section {
       padding: 0px;
+    }
+
+
+    .fare-row {
+      display: block;
+      text-align: center;
+    }
+    .quote-btn {
+      padding: 10px 20px;
+      margin-top: 5px;
     }
   }
 
