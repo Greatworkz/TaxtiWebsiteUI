@@ -89,6 +89,11 @@ import WifiImage from "../../assets/wifi.svg";
 import WaterBottleImage from "../../assets/waterBootle.svg";
 import MusicImage from "../../assets/music.svg";
 import PowerImage from "../../assets/power.svg";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 const FleetsPage = () => {
   const fleets = [
     {
@@ -117,6 +122,14 @@ const FleetsPage = () => {
     },
   ];
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // animate only once
+      easing: "ease-in-out",
+    });
+  })
+
   return (
     <div className="fleets-section">
       <section className="container">
@@ -133,8 +146,14 @@ const FleetsPage = () => {
 
           <div className="fleets-grid">
             {fleets.map((fleet, index) => (
-              <div key={index} className="fleet-card">
+              <div
+                key={index}
+                className="fleet-card"
+                data-aos="zoom-in"
+                data-aos-delay={index * 150}
+              >
                 <h4 className="fleet-name">{fleet.name}</h4>
+
                 <div className="fleet-image-wrap">
                   <img
                     src={fleet.image}
@@ -142,24 +161,6 @@ const FleetsPage = () => {
                     className="fleet-img"
                   />
                 </div>
-
-                {/* <div className="fleet-specs">
-                  <div className="spec-item">
-                    <img src={ContactImage} alt="" />
-                    <span>{fleet.passengers}</span>
-                  </div>
-
-                  <div className="spec-item">
-                    <img src={LuggageImage} alt="" />
-                    <span>{fleet.luggage}</span>
-                  </div>
-
-                  <div className="spec-btn">
-                    <a href="#book" className="fleet-book-link">
-                      Book now
-                    </a>
-                  </div>
-                </div> */}
 
                 <div className="fleet-specs">
                   <div className="spec-left">

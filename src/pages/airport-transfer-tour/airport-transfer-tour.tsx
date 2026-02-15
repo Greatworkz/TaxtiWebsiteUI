@@ -1,13 +1,11 @@
 import { useState } from "react";
-import "./paris-city-tour.css";
-import BannerImage from "../../assets/paris-city-tour-view.png";
+import BannerImage from "../../assets/airport_tour.png";
 import DriverImage from "../../assets/professional-driver.svg";
 import PaymentImage from "../../assets/payment-mode.svg";
 import FreeCancelImage from "../../assets/free-cancel.svg";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 
-
-const ParisCityTour = () => {
+const ParisAirportTour = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [showSecond, setShowSecond] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -167,7 +165,7 @@ const ParisCityTour = () => {
     "Minivan (1-7 passengers)",
     "Luxury Sedan",
     "Luxury SUV",
-    "Minibus (8-15 passengers)"
+    "Minibus (8-15 passengers)",
   ];
 
   const tourPackages = [
@@ -319,49 +317,63 @@ const ParisCityTour = () => {
     try {
       // Get the specific pickup location details
       let pickupDetails = formData.pickupLocation;
-      if (formData.pickupAddress) pickupDetails += ` - ${formData.pickupAddress}`;
-      if (formData.pickupTrainStation) pickupDetails += ` - ${formData.pickupTrainStation}`;
-      if (formData.pickupAirportHotel) pickupDetails += ` - ${formData.pickupAirportHotel}`;
-      if (formData.pickupDisneyLocation) pickupDetails += ` - ${formData.pickupDisneyLocation}`;
+      if (formData.pickupAddress)
+        pickupDetails += ` - ${formData.pickupAddress}`;
+      if (formData.pickupTrainStation)
+        pickupDetails += ` - ${formData.pickupTrainStation}`;
+      if (formData.pickupAirportHotel)
+        pickupDetails += ` - ${formData.pickupAirportHotel}`;
+      if (formData.pickupDisneyLocation)
+        pickupDetails += ` - ${formData.pickupDisneyLocation}`;
 
       // Get the specific drop location details
       let dropDetails = formData.dropLocation;
       if (formData.dropAddress) dropDetails += ` - ${formData.dropAddress}`;
-      if (formData.dropTrainStation) dropDetails += ` - ${formData.dropTrainStation}`;
-      if (formData.dropAirportHotel) dropDetails += ` - ${formData.dropAirportHotel}`;
-      if (formData.dropDisneyLocation) dropDetails += ` - ${formData.dropDisneyLocation}`;
+      if (formData.dropTrainStation)
+        dropDetails += ` - ${formData.dropTrainStation}`;
+      if (formData.dropAirportHotel)
+        dropDetails += ` - ${formData.dropAirportHotel}`;
+      if (formData.dropDisneyLocation)
+        dropDetails += ` - ${formData.dropDisneyLocation}`;
 
       const outputMessage = `
 NEW PARIS CITY TOUR BOOKING - PRAISE CABS
 ═══════════════════════════════════════════════════════════
 
 TOUR PACKAGE
-Tour Type: ${tourPackages.find(p => p.value === formData.tourPackage)?.label || 'Not specified'}
+Tour Type: ${
+        tourPackages.find((p) => p.value === formData.tourPackage)?.label ||
+        "Not specified"
+      }
 Booking Date: ${new Date().toLocaleString()}
 
 BOOKING DETAILS
 Number of Passengers: ${formData.passengers}
-Luggage: ${formData.luggage || 'Not specified'}
+Luggage: ${formData.luggage || "Not specified"}
 Number of Children: ${formData.numberOfChildren}
-Vehicle Type: ${formData.vehicleType || 'Not specified'}
-Pickup Date: ${formData.pickupDate || 'Not specified'}
-Pickup Time: ${formData.pickupTime || 'Not specified'}
-${formData.trainNumber ? `Train Number: ${formData.trainNumber}` : ''}
-${formData.flightNumber ? `Flight Number: ${formData.flightNumber}` : ''}
+Vehicle Type: ${formData.vehicleType || "Not specified"}
+Pickup Date: ${formData.pickupDate || "Not specified"}
+Pickup Time: ${formData.pickupTime || "Not specified"}
+${formData.trainNumber ? `Train Number: ${formData.trainNumber}` : ""}
+${formData.flightNumber ? `Flight Number: ${formData.flightNumber}` : ""}
 
 PICKUP INFORMATION
-Location: ${pickupDetails || 'Not specified'}
+Location: ${pickupDetails || "Not specified"}
 
 DESTINATION
-Location: ${dropDetails || 'Not specified'}
+Location: ${dropDetails || "Not specified"}
 
-${formData.preferredPlace ? `PREFERRED PLACES\n${formData.preferredPlace}\n` : ''}
+${
+  formData.preferredPlace
+    ? `PREFERRED PLACES\n${formData.preferredPlace}\n`
+    : ""
+}
 
 CUSTOMER INFORMATION
 Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Phone: ${formData.phoneNumber}
-Payment Method: ${formData.paymentmethod === 'cash' ? 'Cash' : 'Online'}
+Payment Method: ${formData.paymentmethod === "cash" ? "Cash" : "Online"}
 
 PAYMENT INFORMATION
 Total Fare: ${formData.totalFare} € (all taxes included)
@@ -373,9 +385,18 @@ For any queries, contact us at +33 374 479 185
       `.trim();
 
       const emailFormData = new FormData();
-      emailFormData.append("access_key", "509e28d0-66bd-4f28-a6c7-9f5f33133889");
-      emailFormData.append("subject", `Paris City Tour Booking - ${formData.firstName} ${formData.lastName}`);
-      emailFormData.append("from_name", `${formData.firstName} ${formData.lastName}`);
+      emailFormData.append(
+        "access_key",
+        "509e28d0-66bd-4f28-a6c7-9f5f33133889"
+      );
+      emailFormData.append(
+        "subject",
+        `Paris City Tour Booking - ${formData.firstName} ${formData.lastName}`
+      );
+      emailFormData.append(
+        "from_name",
+        `${formData.firstName} ${formData.lastName}`
+      );
       emailFormData.append("email", formData.email);
       emailFormData.append("message", outputMessage);
       emailFormData.append("to_email", "lingapandi026@gmail.com");
@@ -383,34 +404,34 @@ For any queries, contact us at +33 374 479 185
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: emailFormData
+        body: emailFormData,
       });
 
       const data = await response.json();
-      
+
       if (data.success) {
-        console.log('Email sent successfully');
+        console.log("Email sent successfully");
         return true;
       } else {
-        console.error('Email sending failed:', data.message);
+        console.error("Email sending failed:", data.message);
         return false;
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
       return false;
     }
   };
 
   const handleFinalSubmit = async () => {
     console.log("Booking submitted:", formData);
-    
+
     // Send email
     const emailSent = await sendBookingEmail();
-    
+
     if (!emailSent) {
-      console.warn('Email sending failed, but booking is recorded');
+      console.warn("Email sending failed, but booking is recorded");
     }
-    
+
     // Clear all form data and states
     setFormData({
       tourPackage: "",
@@ -450,7 +471,7 @@ For any queries, contact us at +33 374 479 185
     setExtraTypeFrom("");
     setExtraTypeTo("");
     setShowSecond(false);
-    
+
     alert("Booking confirmed! We'll contact you shortly.");
   };
 
@@ -487,7 +508,9 @@ For any queries, contact us at +33 374 479 185
     },
   ];
 
-  const selectedPackageData = tourPackages.find(p => p.value === selectedPackage);
+  const selectedPackageData = tourPackages.find(
+    (p) => p.value === selectedPackage
+  );
 
   return (
     <div className="home-container">
@@ -496,12 +519,14 @@ For any queries, contact us at +33 374 479 185
         <section className="page">
           <div className="page-title-wrap">
             <h1>
-              <span className="title-bar"></span> Paris City Tour
+              <span className="title-bar"></span> Paris Airport Tour
             </h1>
             <p>
-              Book now your Private Paris city tour to visit most city in the
-              world in one day. Comfortable Car for the family with children,
-              Mercedes minivan for a group or a Luxury transfer.
+              Travel to and from the airport in comfort and style with our
+              reliable transfer service. We offer 24/7 pickups from multiple
+              locations, ensuring flexibility for every schedule. Our
+              professional chauffeurs guarantee a smooth, punctual, and
+              stress-free journey every time.
             </p>
           </div>
 
@@ -528,9 +553,9 @@ For any queries, contact us at +33 374 479 185
 
                 <label className="field-label">Select Tour Package</label>
                 <div className="select-wrap">
-                  <select 
+                  <select
                     name="tourPackage"
-                    value={formData.tourPackage} 
+                    value={formData.tourPackage}
                     onChange={handlePackageChange}
                   >
                     <option value="">Select Package</option>
@@ -543,14 +568,16 @@ For any queries, contact us at +33 374 479 185
                 </div>
 
                 {showPackageList && selectedPackageData && (
-                  <ul style={{ 
-                    listStyle: 'disc', 
-                    paddingLeft: '20px', 
-                    marginTop: '10px',
-                    marginBottom: '15px',
-                    fontSize: '14px',
-                    lineHeight: '1.6'
-                  }}>
+                  <ul
+                    style={{
+                      listStyle: "disc",
+                      paddingLeft: "20px",
+                      marginTop: "10px",
+                      marginBottom: "15px",
+                      fontSize: "14px",
+                      lineHeight: "1.6",
+                    }}
+                  >
                     {selectedPackageData.points.map((point, index) => (
                       <li key={index}>{point}</li>
                     ))}
@@ -558,8 +585,8 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 <div className="checkbox-row">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     className="checkbox-box"
                     checked={showPreferredPlace}
                     onChange={handleCheckboxChange}
@@ -576,7 +603,7 @@ For any queries, contact us at +33 374 479 185
 
                 {showPreferredPlace && (
                   <div className="textarea-wrap">
-                    <textarea 
+                    <textarea
                       name="preferredPlace"
                       value={formData.preferredPlace}
                       onChange={handleInputChange}
@@ -586,10 +613,6 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 <div className="price-per-hour">€50 EUR Per Hour</div>
-
-                
-
-               
 
                 <label className="field-label">Pickup From</label>
                 <div className="select-wrap">
@@ -608,10 +631,13 @@ For any queries, contact us at +33 374 479 185
                 </div>
 
                 {/* Show flight number for airports */}
-                {(selectedFrom === "Charles de Gaulle Airport (CDG)" || 
-                  selectedFrom === "Orly Airport (ORY)" || 
+                {(selectedFrom === "Charles de Gaulle Airport (CDG)" ||
+                  selectedFrom === "Orly Airport (ORY)" ||
                   selectedFrom === "Beauvais Airport (BVA)") && (
-                  <div className="input-icon-wrap" style={{ marginTop: '10px' }}>
+                  <div
+                    className="input-icon-wrap"
+                    style={{ marginTop: "10px" }}
+                  >
                     <input
                       type="text"
                       name="flightNumber"
@@ -623,7 +649,10 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeFrom === "ADDRESS" && (
-                  <div className="input-icon-wrap" style={{ marginTop: '10px' }}>
+                  <div
+                    className="input-icon-wrap"
+                    style={{ marginTop: "10px" }}
+                  >
                     <input
                       type="text"
                       name="pickupAddress"
@@ -636,7 +665,7 @@ For any queries, contact us at +33 374 479 185
 
                 {extraTypeFrom === "TRAIN" && (
                   <>
-                    <div className="select-wrap" style={{ marginTop: '10px' }}>
+                    <div className="select-wrap" style={{ marginTop: "10px" }}>
                       <select
                         name="pickupTrainStation"
                         value={formData.pickupTrainStation}
@@ -650,7 +679,10 @@ For any queries, contact us at +33 374 479 185
                         ))}
                       </select>
                     </div>
-                    <div className="input-icon-wrap" style={{ marginTop: '10px' }}>
+                    <div
+                      className="input-icon-wrap"
+                      style={{ marginTop: "10px" }}
+                    >
                       <input
                         type="text"
                         name="trainNumber"
@@ -663,7 +695,7 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeFrom === "AIRPORT_HOTEL" && (
-                  <div className="select-wrap" style={{ marginTop: '10px' }}>
+                  <div className="select-wrap" style={{ marginTop: "10px" }}>
                     <select
                       name="pickupAirportHotel"
                       value={formData.pickupAirportHotel}
@@ -680,7 +712,7 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeFrom === "DISNEY" && (
-                  <div className="select-wrap" style={{ marginTop: '10px' }}>
+                  <div className="select-wrap" style={{ marginTop: "10px" }}>
                     <select
                       name="pickupDisneyLocation"
                       value={formData.pickupDisneyLocation}
@@ -718,7 +750,10 @@ For any queries, contact us at +33 374 479 185
                 </div>
 
                 {extraTypeTo === "ADDRESS" && (
-                  <div className="input-icon-wrap" style={{ marginTop: '10px' }}>
+                  <div
+                    className="input-icon-wrap"
+                    style={{ marginTop: "10px" }}
+                  >
                     <input
                       type="text"
                       name="dropAddress"
@@ -730,7 +765,7 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeTo === "TRAIN" && (
-                  <div className="select-wrap" style={{ marginTop: '10px' }}>
+                  <div className="select-wrap" style={{ marginTop: "10px" }}>
                     <select
                       name="dropTrainStation"
                       value={formData.dropTrainStation}
@@ -747,7 +782,7 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeTo === "AIRPORT_HOTEL" && (
-                  <div className="select-wrap" style={{ marginTop: '10px' }}>
+                  <div className="select-wrap" style={{ marginTop: "10px" }}>
                     <select
                       name="dropAirportHotel"
                       value={formData.dropAirportHotel}
@@ -764,7 +799,7 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 {extraTypeTo === "DISNEY" && (
-                  <div className="select-wrap" style={{ marginTop: '10px' }}>
+                  <div className="select-wrap" style={{ marginTop: "10px" }}>
                     <select
                       name="dropDisneyLocation"
                       value={formData.dropDisneyLocation}
@@ -780,20 +815,22 @@ For any queries, contact us at +33 374 479 185
                   </div>
                 )}
 
-<label className="field-label">Number of Passengers</label>
+                <label className="field-label">Number of Passengers</label>
                 <div className="select-wrap">
                   <select
                     name="passengers"
                     value={formData.passengers}
                     onChange={handleInputChange}
                   >
-                    {[1,2,3,4,5,6,7,8,9,10].map(num => (
-                      <option key={num} value={num}>{num}</option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
                     ))}
                   </select>
                 </div>
 
- <label className="field-label">Pickup Date</label>
+                <label className="field-label">Pickup Date</label>
                 <div className="input-icon-wrap">
                   <input
                     type="date"
@@ -861,8 +898,6 @@ For any queries, contact us at +33 374 479 185
                     ))}
                   </select>
                 </div>
-
-
 
                 <div className="field-warning">
                   Additional Charge will be added if your pick up location is
@@ -954,46 +989,46 @@ For any queries, contact us at +33 374 479 185
                 <div className="form-row">
                   <div className="input-icon-wrap">
                     <label className="field-label">First Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      placeholder="First" 
+                      placeholder="First"
                     />
                   </div>
 
                   <div className="input-icon-wrap">
                     <label className="field-label">Last Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      placeholder="Last" 
+                      placeholder="Last"
                     />
                   </div>
                 </div>
                 <br />
                 <label className="field-label">Email</label>
                 <div className="input-icon-wrap">
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Email" 
+                    placeholder="Email"
                   />
                 </div>
 
                 <label className="field-label">Phone Number</label>
                 <div className="input-icon-wrap">
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleInputChange}
-                    placeholder="Phone number" 
+                    placeholder="Phone number"
                   />
                 </div>
 
@@ -1015,10 +1050,7 @@ For any queries, contact us at +33 374 479 185
                     <span className="fare-label">Total Fare :</span>
                     <span className="fare-amount">{formData.totalFare} €</span>
                   </div>
-                  <button 
-                    className="btn-book-card"
-                    onClick={handleFinalSubmit}
-                  >
+                  <button className="btn-book-card" onClick={handleFinalSubmit}>
                     Book Now
                   </button>
                 </div>
@@ -1073,4 +1105,4 @@ For any queries, contact us at +33 374 479 185
   );
 };
 
-export default ParisCityTour;
+export default ParisAirportTour;

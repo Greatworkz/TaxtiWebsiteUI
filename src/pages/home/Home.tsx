@@ -9,27 +9,242 @@ import HourlyPackage from "../../component/hourly-package/HourlyPackage";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 import PackagePage from "../../component/Package/Package";
 import sefaImage from "../../assets/safe-secure.png";
+import sendBookingEmail  from "../../utils/emailService";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
+
+
 const Home = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,   // animation happens only once
+    });
+  }, []);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(2);
+  const [selectedFrom, setSelectedFrom] = useState("");
+  const [selectedTo, setSelectedTo] = useState("");
+  const [extraTypeFrom, setExtraTypeFrom] = useState("");
+  const [extraTypeTo, setExtraTypeTo] = useState("");
+
+  const FromLocation = [
+    {
+      id: "From_1",
+      label: "Charles de Gaulle Airport (CDG)",
+      value: "Charles de Gaulle Airport (CDG)",
+    },
+    {
+      id: "From_2",
+      label: "Orly Airport (ORY)",
+      value: "Orly Airport (ORY)",
+    },
+    {
+      id: "From_3",
+      label: "Beauvais Airport (BVA)",
+      value: "Beauvais Airport (BVA)",
+    },
+    {
+      id: "From_4",
+      label: "Disneyland & Hotels",
+      value: "Disneyland & Hotels",
+      type: "DISNEY",
+    },
+    {
+      id: "From_5",
+      label: "Paris (Hotels, Apartments, Historic, Monuments)",
+      value: "Paris (Hotels, Apartments, Historic, Monuments)",
+      type: "ADDRESS",
+    },
+    {
+      id: "From_6",
+      label: "Paris Train Stations",
+      value: "Paris Train Stations",
+      type: "TRAIN",
+    },
+    {
+      id: "From_7",
+      label: "Airport Hotels",
+      value: "Airport Hotels",
+      type: "AIRPORT_HOTEL",
+    },
+    {
+      id: "From_8",
+      label: "Versailles",
+      value: "Versailles",
+    },
+  ];
+
+  const ToLocation = [
+    {
+      id: "To_1",
+      label: "Charles de Gaulle Airport (CDG)",
+      value: "Charles de Gaulle Airport (CDG)",
+    },
+    {
+      id: "To_2",
+      label: "Orly Airport (ORY)",
+      value: "Orly Airport (ORY)",
+    },
+    {
+      id: "To_3",
+      label: "Beauvais Airport (BVA)",
+      value: "Beauvais Airport (BVA)",
+    },
+    {
+      id: "To_4",
+      label: "Disneyland & Hotels",
+      value: "Disneyland & Hotels",
+      type: "DISNEY",
+    },
+    {
+      id: "To_5",
+      label: "Paris (Hotels, Apartments, Historic, Monuments)",
+      value: "Paris (Hotels, Apartments, Historic, Monuments)",
+      type: "ADDRESS",
+    },
+    {
+      id: "To_6",
+      label: "Paris Train Stations",
+      value: "Paris Train Stations",
+      type: "TRAIN",
+    },
+    {
+      id: "To_7",
+      label: "Airport Hotels",
+      value: "Airport Hotels",
+      type: "AIRPORT_HOTEL",
+    },
+    {
+      id: "To_8",
+      label: "Versailles",
+      value: "Versailles",
+    },
+  ];
+
+  const trainStations = [
+    "Gare de Nord",
+    "Gare de Lyon",
+    "Gare de L'Est",
+    "Gare St Lazare",
+    "Gare de Bercy",
+    "Gare Montparnasse",
+  ];
+
+  const airportHotels = [
+    "CDG Airport Hotels",
+    "Orly Airport Hotels",
+    "Beauvais Airport Hotels",
+  ];
+
+  const disneyLocations = [
+    "Disneyland Paris (Park)",
+    "Disneyland Hotel",
+    "Disney's Hotel Newport Bay Club",
+    "Disney's Hotel Marvel New York",
+    "Disney's Hotel Cheyenne",
+    "Disney's Hotel Sequoia Lodge",
+    "Disney's Hotel Santa Fe",
+    "Hotel Explorers",
+    "Grand Magic Hotel",
+    "Hotel B&B Disney",
+    "Campanille Val de France Disney",
+    "Village Nature Center Parc",
+    "Davy Crockett Ranch",
+    "Adagio Val d'Europe",
+    "Staycity Marne la Valée",
+    "Marriott's Village",
+    "Hotel Radisson Blu",
+    "Ibis Val d'Europe",
+    "Relais SPA",
+    "Resid'home",
+    "Hotel Moxy Val d'Europe",
+    "Séjours Affaires Apparthotel",
+    "Gare Marne la Vallée",
+    "Airbnb around Disney",
+    "Val d'Europe Shopping Center",
+    "Vallée Village",
+    "Others",
+  ];
 
   // Form data state
   const [formData, setFormData] = useState({
+    // Trip details
+    tripType: "",
+    pickupLocation: "",
+    dropLocation: "",
+    passengers: "",
+
+    // Extra location details for pickup
+    pickupAddress: "",
+    pickupTrainStation: "",
+    pickupAirportHotel: "",
+    pickupDisneyLocation: "",
+
+    // Extra location details for drop
+    dropAddress: "",
+    dropTrainStation: "",
+    dropAirportHotel: "",
+    dropDisneyLocation: "",
+
     // Step 1
     pickupDate: "",
     pickupTime: "",
     arrivalFlightNumber: "",
     luggage: "",
     numberOfChildren: "",
+
     // Step 2
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
     paymentmethod: "",
+
     // Step 3 (confirmation)
     totalFare: "10,234.00",
   });
+
+  const handleFromChange = (e: any) => {
+    const value = e.target.value;
+    setSelectedFrom(value);
+
+    const selectedItem = FromLocation.find((item) => item.value === value);
+    setExtraTypeFrom(selectedItem?.type || "");
+
+    // Update formData
+    setFormData((prev) => ({
+      ...prev,
+      pickupLocation: value,
+      // Reset extra fields when location changes
+      pickupAddress: "",
+      pickupTrainStation: "",
+      pickupAirportHotel: "",
+      pickupDisneyLocation: "",
+    }));
+  };
+
+  const handleToChange = (e: any) => {
+    const value = e.target.value;
+    setSelectedTo(value);
+
+    const selectedItem = ToLocation.find((item) => item.value === value);
+    setExtraTypeTo(selectedItem?.type || "");
+
+    // Update formData
+    setFormData((prev) => ({
+      ...prev,
+      dropLocation: value,
+      dropAddress: "",
+      dropTrainStation: "",
+      dropAirportHotel: "",
+      dropDisneyLocation: "",
+    }));
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -51,7 +266,7 @@ const Home = () => {
   const handlePrevious = () => {
     if (currentStep == 3) {
       setCurrentStep(currentStep - 1);
-    }else{
+    } else {
       closeModal();
     }
   };
@@ -64,10 +279,68 @@ const Home = () => {
     }));
   };
 
-  const handleFinalSubmit = () => {
+
+  
+  const handleFinalSubmit = async () => {
     // Handle final booking submission
     console.log("Booking submitted:", formData);
+
+    const emailSent = await sendBookingEmail(formData);
+    
+    if (!emailSent) {
+      console.warn('Email sending failed, but booking is recorded');
+    }
+
+    // Clear all form data
+    setFormData({
+      // Trip details
+      tripType: "single",
+      pickupLocation: "",
+      dropLocation: "",
+      passengers: "1",
+
+      // Extra location details for pickup
+      pickupAddress: "",
+      pickupTrainStation: "",
+      pickupAirportHotel: "",
+      pickupDisneyLocation: "",
+
+      // Extra location details for drop
+      dropAddress: "",
+      dropTrainStation: "",
+      dropAirportHotel: "",
+      dropDisneyLocation: "",
+
+      // Step 1
+      pickupDate: "",
+      pickupTime: "",
+      arrivalFlightNumber: "",
+      luggage: "",
+      numberOfChildren: "",
+
+      // Step 2
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      paymentmethod: "",
+
+      // Step 3 (confirmation)
+      totalFare: "10,234.00",
+    });
+
+    // Reset selection states
+    setSelectedFrom("");
+    setSelectedTo("");
+    setExtraTypeFrom("");
+    setExtraTypeTo("");
+
+    // Reset to first step
+    setCurrentStep(2);
+
+    // Close modal
     closeModal();
+
     alert("Booking confirmed! We'll contact you shortly.");
   };
 
@@ -77,7 +350,7 @@ const Home = () => {
       <section className="home-container">
         <img className="Banner" src={banner} alt="Banner" />
         <div className="BnrTxt">
-          <h1>
+          <h1 className="animate__animated animate__backInDown">
             <span>Praise</span>
             <span>Cabs</span>
           </h1>
@@ -87,33 +360,207 @@ const Home = () => {
         <div className="TpBkCrd">
           <div className="TpBkCrd__item">
             <label>Trip Type</label>
-            <select>
+            <select
+              name="tripType"
+              value={formData.tripType}
+              onChange={handleInputChange}
+            >
+              <option value=""></option>
               <option value="1">Single Trip</option>
               <option value="2">Round Trip</option>
             </select>
           </div>
 
           <div className="TpBkCrd__item">
-            <label>Pickup From</label>
-            <input type="text" placeholder="Pickup Location" />
+            <label>Pickup Location</label>
+            <select value={selectedFrom} onChange={handleFromChange}>
+              <option value="">Pickup Location</option>
+              {FromLocation.map((item) => (
+                <option key={item.id} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
           </div>
+
+          {/* PARIS CITY → Show Address Input */}
+          {extraTypeFrom === "ADDRESS" && (
+            <div className="TpBkCrd__item">
+              <label>Pickup Address</label>
+              <input
+                type="text"
+                placeholder="Enter full pickup address"
+                name="pickupAddress"
+                value={formData.pickupAddress}
+                onChange={handleInputChange}
+              />
+            </div>
+          )}
+
+          {/* TRAIN STATION → Show Station Dropdown */}
+          {extraTypeFrom === "TRAIN" && (
+            <div className="TpBkCrd__item">
+              <label>Select Train Station</label>
+              <select
+                name="pickupTrainStation"
+                value={formData.pickupTrainStation}
+                onChange={handleInputChange}
+              >
+                <option value="">Select Station</option>
+                {trainStations.map((station, index) => (
+                  <option key={index} value={station}>
+                    {station}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* AIRPORT HOTELS → Show Airport Hotel Dropdown */}
+          {extraTypeFrom === "AIRPORT_HOTEL" && (
+            <div className="TpBkCrd__item">
+              <label>Select Airport Hotel Area</label>
+              <select
+                name="pickupAirportHotel"
+                value={formData.pickupAirportHotel}
+                onChange={handleInputChange}
+              >
+                <option value="">Select</option>
+                {airportHotels.map((hotel, index) => (
+                  <option key={index} value={hotel}>
+                    {hotel}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* DISNEY → Show Searchable Dropdown */}
+          {extraTypeFrom === "DISNEY" && (
+            <div className="TpBkCrd__item">
+              <label>Disney Location</label>
+              <input
+                list="disney-options"
+                placeholder="Type or select location"
+                name="pickupDisneyLocation"
+                value={formData.pickupDisneyLocation}
+                onChange={handleInputChange}
+              />
+              <datalist id="disney-options">
+                {disneyLocations.map((item, index) => (
+                  <option key={index} value={item} />
+                ))}
+              </datalist>
+            </div>
+          )}
 
           <div className="TpBkCrd__item">
             <label>Destination</label>
-            <input type="text" placeholder="Drop Location" />
+            <select
+              name="dropLocation"
+              value={selectedTo}
+              onChange={handleToChange}
+            >
+              <option value="">Drop Location</option>
+              {ToLocation.map((item) => (
+                <option key={item.id} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
           </div>
+
+          {/* PARIS CITY → Show Address Input */}
+          {extraTypeTo === "ADDRESS" && (
+            <div className="TpBkCrd__item">
+              <label>Pickup Address</label>
+              <input
+                type="text"
+                placeholder="Enter full pickup address"
+                name="dropAddress"
+                value={formData.dropAddress}
+                onChange={handleInputChange}
+              />
+            </div>
+          )}
+
+          {/* TRAIN STATION → Show Station Dropdown */}
+          {extraTypeTo === "TRAIN" && (
+            <div className="TpBkCrd__item">
+              <label>Select Train Station</label>
+              <select
+                name="dropTrainStation"
+                value={formData.dropTrainStation}
+                onChange={handleInputChange}
+              >
+                <option value="">Select Station</option>
+                {trainStations.map((station, index) => (
+                  <option key={index} value={station}>
+                    {station}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* AIRPORT HOTELS → Show Airport Hotel Dropdown */}
+          {extraTypeTo === "AIRPORT_HOTEL" && (
+            <div className="TpBkCrd__item">
+              <label>Select Airport Hotel Area</label>
+              <select
+                name="dropAirportHotel"
+                value={formData.dropAirportHotel}
+                onChange={handleInputChange}
+              >
+                <option value="">Select</option>
+                {airportHotels.map((hotel, index) => (
+                  <option key={index} value={hotel}>
+                    {hotel}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* DISNEY → Show Searchable Dropdown */}
+          {extraTypeTo === "DISNEY" && (
+            <div className="TpBkCrd__item">
+              <label>Disney Location</label>
+              <input
+                list="disney-options"
+                placeholder="Type or select location"
+                name="dropDisneyLocation"
+                value={formData.dropDisneyLocation}
+                onChange={handleInputChange}
+              />
+              <datalist id="disney-options">
+                {disneyLocations.map((item, index) => (
+                  <option key={index} value={item} />
+                ))}
+              </datalist>
+            </div>
+          )}
 
           <div className="TpBkCrd__item">
             <label>Passengers</label>
-            <select>
+            <select
+              name="passengers"
+              value={formData.passengers}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Passengers</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
             </select>
           </div>
 
-          <div className="TpBkCrd__item TleFreBy">
+          <div className="TpBkCrd__item_btn TleFreBy">
             <p>
               Total Fare: <span className="TleAmt">10,234.00 €</span>
             </p>
@@ -125,7 +572,7 @@ const Home = () => {
       {/* Container for other sections */}
       <section className="container">
         {/* Our Tour Packages */}
-        <div className="TrPckBy">
+        <div className="TrPckBy"  data-aos="fade-up" data-aos-delay="100">
           <div className="titleBy">
             <span className="Title-line"></span>
             <h1 className="title">Our Tour Package</h1>
@@ -209,7 +656,9 @@ const Home = () => {
               <button className="cntWhtap-btn">Connect Whatsapp</button>
             </div>
 
-            <div className="image-side">
+            <div className="image-side " data-aos="fade-left"
+data-aos-duration="1000"
+data-aos-easing="ease-in-out">
               <img src={AboutUsImage} alt="About Paris Disney Taxi" />
             </div>
           </div>
@@ -377,7 +826,7 @@ const Home = () => {
                   </div>
 
                   <div className="form-row">
-                  <div className="form-group">
+                    <div className="form-group">
                       <label>Payment Method</label>
                       <select
                         name="paymentmethod"
@@ -385,21 +834,30 @@ const Home = () => {
                         onChange={handleInputChange}
                       >
                         <option value="0">Select</option>
-                        <option value="0">Cash</option>
-                        <option value="1">Online</option>
+                        <option value="0">Pay cash to driver</option>
+                        <option value="1">
+                          Pay by credit card to driver (+5€ way)
+                        </option>
                       </select>
-                      </div>
                     </div>
+                  </div>
 
-                    <div className="summary-row">
-                      <span className="TotalFare">Total Fare  :</span>
-                      <span >
-                        <span className="total-amount">{formData.totalFare} €{" "}</span> (all taxes included)
-                      </span>
-                    </div>
+                  <div className="summary-row">
+                    <span className="TotalFare">Total Fare :</span>
+                    <span>
+                      <span className="total-amount">
+                        {formData.totalFare} €{" "}
+                      </span>{" "}
+                      (all taxes included)
+                    </span>
+                  </div>
 
                   <div className="form-info-box">
-                    <p> *We can generally accept all bookings up to 12 hours before the time of your transfer. For late booking please contact our customer service +33 624 891 938
+                    <p>
+                      {" "}
+                      *We can generally accept all bookings up to 12 hours
+                      before the time of your transfer. For late booking please
+                      contact our customer service +33 624 891 938
                     </p>
                   </div>
                 </div>
@@ -471,7 +929,10 @@ const Home = () => {
               )}
 
               {currentStep == 2 ? (
-                <button className="btn-modal modal-btn-next" onClick={handleNext}>
+                <button
+                  className="btn-modal modal-btn-next"
+                  onClick={handleNext}
+                >
                   Next
                 </button>
               ) : (
