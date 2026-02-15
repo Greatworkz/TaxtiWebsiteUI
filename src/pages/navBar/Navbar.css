@@ -48,7 +48,6 @@
   font-weight: 600;
   /* border-bottom: 2px solid black; */
   /* padding-bottom: 4px; */
-  color: var(--color-sub-title);
 }
 
 /* Hamburger Menu Button */
@@ -137,7 +136,6 @@
     height: 100vh;
     width: 70%;
     /* max-width: 300px; */
-    background-color: white;
     flex-direction: column;
     gap: 0;
     padding: 80px 30px 30px;
@@ -145,16 +143,20 @@
     transition: right 0.3s ease;
     transform: none;
     left: auto;
+    color: #fff;
   }
 
   .navbar__menu.active {
     right: 0;
+    background-color: #222222;
+    
   }
 
   .navbar__menu li {
     width: 100%;
     padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
+    
   }
 
   .navbar__menu li:last-child {
@@ -169,9 +171,10 @@
 
   .navbar__menu a.active {
     border-bottom: none;
-    border-left: 3px solid black;
+    border-left: 3px solid #ff9224;
     padding-left: 10px;
     padding-bottom: 0;
+    color: #ff9224;
   }
 
   .navbar__overlay {
@@ -189,6 +192,7 @@
 @media (max-width: 480px) {
   .navbar__menu {
     width: 80%;
+    color: #fff;
   }
 }
 
