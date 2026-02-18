@@ -3,6 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "animate.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const Package = () => {
   useEffect(() => {
     AOS.init({
@@ -10,6 +11,12 @@ const Package = () => {
       once: true,
     });
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate("/disney/tour");
+  };
   const transfers = [
     {
       title: "CDG Airport to Disneyland Transfer",
@@ -103,7 +110,7 @@ const Package = () => {
                 ))}
               </div>
 
-              <button className="btn-book-now">Book Now</button>
+              <button className="btn-book-now" onClick={handleBookNow}>Book Now</button>
             </div>
           ))}
         </div>
