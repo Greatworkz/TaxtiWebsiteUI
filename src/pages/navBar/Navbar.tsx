@@ -53,11 +53,11 @@ const Navbar = () => {
             Service
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/pricing" onClick={closeMenu}>
             Pricing
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/contact" onClick={closeMenu}>
             Contact

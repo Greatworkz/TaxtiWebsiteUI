@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import PariseTripOne from "../../assets/paris-trip-1.svg";
 import PariseTripTwo from "../../assets/paris-trip-2.svg";
 import PariseTripThree from "../../assets/paris-trip-3.svg";
@@ -6,7 +7,7 @@ import './HourlyPackage.css'
 const items = [
   {
     img: PariseTripOne,
-    title: "Sedan Class",
+    title: "Paris Day Trip",
     hours: 4,
     price: "225 €",
     description:
@@ -14,15 +15,15 @@ const items = [
   },
   {
     img: PariseTripTwo,
-    title: "Sedan Class",
+    title: "Paris Day Trip",
     hours: 4,
-    price: "225 €",
+    price: "455 €",
     description:
       "Eiffel Tower, Louvre Museum, Notre Dame Cathedral, Arc de Triomphe, Montmartre, Champs-Élysées Avenue, Musée d’Orsay, and Sainte-Chapelle.",
   },
   {
     img: PariseTripThree,
-    title: "Sedan Class",
+    title: "Paris Night Trip",
     hours: 4,
     price: "225 €",
     description:
@@ -31,6 +32,11 @@ const items = [
 ];
 
 const HourlyPackage = () => {
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate("/pariscity/tour");
+  };
   return (
     <section className="HrPakBy">
       <div className="HrCntBy">
@@ -56,7 +62,7 @@ const HourlyPackage = () => {
                 </p>
                 <p>{item.description}</p>
                 <div className="HrPak-footer">
-                  <button className="HrPak-book-btn">Book Now</button>
+                  <button className="HrPak-book-btn" onClick={handleBookNow}>Book Now</button>
                 </div>
               </div>
             </div>

@@ -92,9 +92,16 @@ import PowerImage from "../../assets/power.svg";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 
 const FleetsPage = () => {
+
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate("/booking");
+  };
   const fleets = [
     {
       name: "Sedan",
@@ -176,7 +183,7 @@ const FleetsPage = () => {
                   </div>
 
                   <div className="spec-btn">
-                    <a href="#book" className="fleet-book-link">
+                    <a onClick={handleBookNow} className="fleet-book-link">
                       Book now
                     </a>
                   </div>

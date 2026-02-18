@@ -8,6 +8,7 @@ import FleetsPage from "../../component/ourFleets/FleetsPage";
 const ParisAirportTour = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [showSecond, setShowSecond] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState("");
   const [showPackageList, setShowPackageList] = useState(false);
   const [showPreferredPlace, setShowPreferredPlace] = useState(false);
@@ -470,7 +471,8 @@ For any queries, contact us at +33 374 479 185
     setSelectedTo("");
     setExtraTypeFrom("");
     setExtraTypeTo("");
-    setShowSecond(false);
+    // setShowSecond(false);
+    setCurrentStep(1);
 
     alert("Booking confirmed! We'll contact you shortly.");
   };
@@ -522,18 +524,16 @@ For any queries, contact us at +33 374 479 185
               <span className="title-bar"></span> Paris Airport Tour
             </h1>
             <p>
-              Travel to and from the airport in comfort and style with our
-              reliable transfer service. We offer 24/7 pickups from multiple
-              locations, ensuring flexibility for every schedule. Our
-              professional chauffeurs guarantee a smooth, punctual, and
-              stress-free journey every time.
+              Book now your Private Paris city tour to visit most city in the
+              world in one day. Comfortable Car for the family with children,
+              Mercedes minivan for a group or a Luxury transfer.
             </p>
           </div>
 
-          {!showSecond && (
+          {currentStep === 1 && (
             <div className="quote-grid">
               <div className="card">
-                <div className="card-heading">1/2 Quick Quote</div>
+                <div className="card-heading">1/3 Quick Quote</div>
 
                 <div className="notes-block">
                   <div className="note">
@@ -613,6 +613,21 @@ For any queries, contact us at +33 374 479 185
                 )}
 
                 <div className="price-per-hour">€50 EUR Per Hour</div>
+
+                <label className="field-label">Number of Passengers</label>
+                <div className="select-wrap">
+                  <select
+                    name="passengers"
+                    value={formData.passengers}
+                    onChange={handleInputChange}
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
                 <label className="field-label">Pickup From</label>
                 <div className="select-wrap">
@@ -815,90 +830,6 @@ For any queries, contact us at +33 374 479 185
                   </div>
                 )}
 
-                <label className="field-label">Number of Passengers</label>
-                <div className="select-wrap">
-                  <select
-                    name="passengers"
-                    value={formData.passengers}
-                    onChange={handleInputChange}
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                      <option key={num} value={num}>
-                        {num}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <label className="field-label">Pickup Date</label>
-                <div className="input-icon-wrap">
-                  <input
-                    type="date"
-                    name="pickupDate"
-                    value={formData.pickupDate}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <label className="field-label">Pickup Time</label>
-                <div className="input-icon-wrap">
-                  <input
-                    type="time"
-                    name="pickupTime"
-                    value={formData.pickupTime}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <label className="field-label">Luggage</label>
-                <div className="select-wrap">
-                  <select
-                    name="luggage"
-                    value={formData.luggage}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select</option>
-                    <option value="0">No Luggage</option>
-                    <option value="1">1 Bag</option>
-                    <option value="2">2 Bags</option>
-                    <option value="3">3 Bags</option>
-                    <option value="4">4 Bags</option>
-                    <option value="5+">5+ Bags</option>
-                  </select>
-                </div>
-
-                <label className="field-label">Number of Children</label>
-                <div className="select-wrap">
-                  <select
-                    name="numberOfChildren"
-                    value={formData.numberOfChildren}
-                    onChange={handleInputChange}
-                  >
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5+">5+</option>
-                  </select>
-                </div>
-
-                <label className="field-label">Select Vehicle</label>
-                <div className="select-wrap">
-                  <select
-                    name="vehicleType"
-                    value={formData.vehicleType}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select Vehicle Type</option>
-                    {vehicleTypes.map((vehicle, index) => (
-                      <option key={index} value={vehicle}>
-                        {vehicle}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
                 <div className="field-warning">
                   Additional Charge will be added if your pick up location is
                   outside the paris
@@ -911,10 +842,10 @@ For any queries, contact us at +33 374 479 185
                     <span className="fare-amount">{formData.totalFare} €</span>
                   </div>
                   <button
-                    onClick={() => setShowSecond(true)}
+                    onClick={() => setCurrentStep(2)}
                     className="btn-book-card"
                   >
-                    Book Now
+                    Next
                   </button>
                 </div>
 
@@ -982,10 +913,183 @@ For any queries, contact us at +33 374 479 185
             </div>
           )}
 
-          {showSecond && (
+          {currentStep === 2 && (
             <div className="quote-grid">
               <div className="card">
-                <div className="card-heading">2/2 Customer Details</div>
+                <div className="card-heading">2/3 Travel Details</div>
+
+                <label className="field-label">Number of Passengers</label>
+                <div className="select-wrap">
+                  <select
+                    name="passengers"
+                    value={formData.passengers}
+                    onChange={handleInputChange}
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <label className="field-label">Luggage</label>
+                <div className="select-wrap">
+                  <select
+                    name="luggage"
+                    value={formData.luggage}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="0">No Luggage</option>
+                    <option value="1">1 Bag</option>
+                    <option value="2">2 Bags</option>
+                    <option value="3">3 Bags</option>
+                    <option value="4">4 Bags</option>
+                    <option value="5+">5+ Bags</option>
+                  </select>
+                </div>
+
+                <label className="field-label">Number of Children</label>
+                <div className="select-wrap">
+                  <select
+                    name="numberOfChildren"
+                    value={formData.numberOfChildren}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5+</option>
+                  </select>
+                </div>
+
+                <label className="field-label">Select Vehicle</label>
+                <div className="select-wrap">
+                  <select
+                    name="vehicleType"
+                    value={formData.vehicleType}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select Vehicle Type</option>
+                    {vehicleTypes.map((vehicle, index) => (
+                      <option key={index} value={vehicle}>
+                        {vehicle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <label className="field-label">Pickup Date</label>
+                <div className="input-icon-wrap">
+                  <input
+                    type="date"
+                    name="pickupDate"
+                    value={formData.pickupDate}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <label className="field-label">Pickup Time</label>
+                <div className="input-icon-wrap">
+                  <input
+                    type="time"
+                    name="pickupTime"
+                    value={formData.pickupTime}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="divider"></div>
+                <div className="fare-btn-row">
+                  <div className="fare-left">
+                    <span className="fare-label">Total Fare :</span>
+                    <span className="fare-amount">{formData.totalFare} €</span>
+                  </div>
+                  <button
+                    onClick={() => setCurrentStep(1)}
+                    className="btn-book-card"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setCurrentStep(3)}
+                    className="btn-book-card"
+                  >
+                    Next
+                  </button>
+                </div>
+
+                <div className="card-note">
+                  *We can generally accept all bookings upto 12 hours before the
+                  time of your transfer. For late booking please contact{" "}
+                  <a href="tel:+33893844234">+33 893 8444 234</a>
+                </div>
+              </div>
+
+              <div className="info-panel">
+                <h2>
+                  <span className="title-bar"></span> Instant Quote and Book
+                </h2>
+                <p>
+                  Enjoy door-to-door private transfers that get you to your
+                  destination relaxed and on time. Pre-book affordable taxi
+                  services to the city center, Disneyland, or the airport.
+                  Choose from comfortable family cars, economy minivans for
+                  groups, or luxury vehicles for a premium experience.
+                </p>
+
+                <div className="feature-list">
+                  <div className="feature-item">
+                    <img src={DriverImage} alt="" />
+                    <div className="feat-text">
+                      <strong>
+                        <span className="accent">Professional</span> Driver
+                      </strong>
+                      <span>
+                        Our drivers are skilled, well travelled and have years
+                        of journey experiences.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="feature-item">
+                    <img src={FreeCancelImage} alt="" />
+                    <div className="feat-text">
+                      <strong>
+                        <span className="accent">Free</span> Cancellation
+                      </strong>
+                      <span>
+                        Transfers can be cancelled free of charge up to 24 hours
+                        prior to your transfer
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="feature-item">
+                    <img src={PaymentImage} alt="" />
+
+                    <div className="feat-text">
+                      <strong>
+                        <span className="accent">Payment</span> Mode
+                      </strong>
+                      <span>
+                        We provide three payment options. ( Pay cash to the
+                        driver, Online payment or pay by card to the driver)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {currentStep === 3 && (
+            <div className="quote-grid">
+              <div className="card">
+                <div className="card-heading">3/3 Customer Details</div>
                 <div className="form-row">
                   <div className="input-icon-wrap">
                     <label className="field-label">First Name</label>
@@ -1050,6 +1154,12 @@ For any queries, contact us at +33 374 479 185
                     <span className="fare-label">Total Fare :</span>
                     <span className="fare-amount">{formData.totalFare} €</span>
                   </div>
+                  <button
+                    className="btn-book-card"
+                    onClick={() => setCurrentStep(2)}
+                  >
+                    Previous
+                  </button>
                   <button className="btn-book-card" onClick={handleFinalSubmit}>
                     Book Now
                   </button>

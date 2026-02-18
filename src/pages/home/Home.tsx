@@ -344,6 +344,14 @@ const Home = () => {
     alert("Booking confirmed! We'll contact you shortly.");
   };
 
+  const handleWhatsappClick = () => {
+    const phoneNumber = "+9190032 06411"; // your number with country code
+    const message = "Hello! I want to book a cab."; // optional pre-filled message
+    const whatsappLink = `https://wa.me/${phoneNumber.replace(/[^\d]/g, "")}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappLink, "_blank"); // open in new tab
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -653,7 +661,7 @@ const Home = () => {
                 From airport transfers to Disneyland Paris and city tours, we
                 ensure comfort, safety, and top-class service.
               </p>
-              <button className="cntWhtap-btn">Connect Whatsapp</button>
+              <button className="cntWhtap-btn" onClick={handleWhatsappClick}>Connect Whatsapp</button>
             </div>
 
             <div className="image-side " data-aos="fade-left"
@@ -724,16 +732,12 @@ data-aos-easing="ease-in-out">
                   <div className="form-row">
                     <div className="form-group">
                       <label>Arrival Flight number</label>
-                      <select
+                      <input
+                        type="text"
                         name="arrivalFlightNumber"
                         value={formData.arrivalFlightNumber}
                         onChange={handleInputChange}
-                      >
-                        <option value="">Select flight</option>
-                        <option value="AF123">AF123</option>
-                        <option value="BA456">BA456</option>
-                        <option value="LH789">LH789</option>
-                      </select>
+                      />
                     </div>
                   </div>
 
