@@ -6,6 +6,7 @@ import FreeCancelImage from '../../assets/free-cancel.svg';
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 import Package from "../../component/Package/Package";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const DisneyLandTour = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -347,6 +348,19 @@ For any queries, contact us at +33 374 479 185
 
   const handleFinalSubmit = async () => {
     console.log("Booking submitted:", formData);
+
+    if (!formData.firstName || formData.firstName.trim() === "") {
+      alert("Enter Your Name");
+      return;
+    }
+    if (!formData.email || formData.email.trim() === "") {
+      alert("Enter Your email");
+      return;
+    }
+    if (!formData.phoneNumber || formData.phoneNumber.trim() === "") {
+      alert("Enter Your phoneNumber");
+      return;
+    }
     
     // Send email
     const emailSent = await sendBookingEmail();
@@ -354,6 +368,14 @@ For any queries, contact us at +33 374 479 185
     if (!emailSent) {
       console.warn('Email sending failed, but booking is recorded');
     }
+
+    // Swal.fire({
+    //   position: "top-end",
+    //   icon: "success",
+    //   title: "Booking submitted successfully",
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // });
     
     // Clear all form data and states
     setFormData({
@@ -701,7 +723,7 @@ For any queries, contact us at +33 374 479 185
             {/* STEP 3: Customer Information */}
             {currentStep === 3 && (
               <>
-                <label>First Name</label>
+                <label>First Name<span style={{ color : 'red'}}>*</span></label>
                 <input
                   type="text"
                   name="firstName"
@@ -719,7 +741,7 @@ For any queries, contact us at +33 374 479 185
                   placeholder="Last Name"
                 />
 
-                <label>Email</label>
+                <label>Email<span style={{ color : 'red'}}>*</span></label>
                 <input
                   type="email"
                   name="email"
@@ -728,7 +750,7 @@ For any queries, contact us at +33 374 479 185
                   placeholder="Email"
                 />
 
-                <label>Phone Number</label>
+                <label>Phone Number <span style={{ color : 'red'}}>*</span></label>
                 <input
                   type="tel"
                   name="phoneNumber"

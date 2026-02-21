@@ -427,6 +427,18 @@ For any queries, contact us at +33 374 479 185
   const handleFinalSubmit = async () => {
     console.log("Booking submitted:", formData);
 
+    if (!formData.firstName || formData.firstName.trim() === "") {
+      alert("Enter Your Name");
+      return;
+    }
+    if (!formData.email || formData.email.trim() === "") {
+      alert("Enter Your email");
+      return;
+    }
+    if (!formData.phoneNumber || formData.phoneNumber.trim() === "") {
+      alert("Enter Your phoneNumber");
+      return;
+    }
     // Send email
     const emailSent = await sendBookingEmail();
 
@@ -1093,7 +1105,7 @@ For any queries, contact us at +33 374 479 185
                 <div className="card-heading">3/3 Customer Details</div>
                 <div className="form-row">
                   <div className="input-icon-wrap">
-                    <label className="field-label">First Name</label>
+                    <label className="field-label">First Name<span style={{ color : 'red'}}>*</span></label>
                     <input
                       type="text"
                       name="firstName"
@@ -1115,7 +1127,7 @@ For any queries, contact us at +33 374 479 185
                   </div>
                 </div>
                 <br />
-                <label className="field-label">Email</label>
+                <label className="field-label">Email<span style={{ color : 'red'}}>*</span></label>
                 <div className="input-icon-wrap">
                   <input
                     type="email"
@@ -1126,7 +1138,7 @@ For any queries, contact us at +33 374 479 185
                   />
                 </div>
 
-                <label className="field-label">Phone Number</label>
+                <label className="field-label">Phone Number<span style={{ color : 'red'}}>*</span></label>
                 <div className="input-icon-wrap">
                   <input
                     type="tel"

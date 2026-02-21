@@ -371,6 +371,18 @@ For any queries, contact us at +33 374 479 185
   const handleFinalSubmit = async () => {
     console.log("Booking submitted:", formData);
 
+    if (!formData.firstName || formData.firstName.trim() === "") {
+      alert("Enter Your Name");
+      return;
+    }
+    if (!formData.email || formData.email.trim() === "") {
+      alert("Enter Your email");
+      return;
+    }
+    if (!formData.phoneNumber || formData.phoneNumber.trim() === "") {
+      alert("Enter Your phoneNumber");
+      return;
+    }
     // Send email
     const emailSent = await sendBookingEmail();
 

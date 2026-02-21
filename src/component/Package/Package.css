@@ -258,6 +258,9 @@
     .card-title {
       font-size: 15px;
     }
+    .pricing-card {
+      border: 1px dotted #B2B1B1;
+    }
   }
   
   /* Small Mobile - 640px and below */

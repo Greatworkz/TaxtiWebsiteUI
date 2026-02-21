@@ -4,10 +4,11 @@ import DriverImage from "../../assets/professional-driver.svg";
 import PaymentImage from "../../assets/payment-mode.svg";
 import FreeCancelImage from "../../assets/free-cancel.svg";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
+import Swal from "sweetalert2";
 
 const ParisAirportTour = () => {
   const [openFaq, setOpenFaq] = useState(null);
-  const [showSecond, setShowSecond] = useState(false);
+  // const [showSecond, setShowSecond] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState("");
   const [showPackageList, setShowPackageList] = useState(false);
@@ -316,6 +317,8 @@ const ParisAirportTour = () => {
 
   const sendBookingEmail = async () => {
     try {
+
+      
       // Get the specific pickup location details
       let pickupDetails = formData.pickupLocation;
       if (formData.pickupAddress)
@@ -426,10 +429,23 @@ For any queries, contact us at +33 374 479 185
   const handleFinalSubmit = async () => {
     console.log("Booking submitted:", formData);
 
+    if (!formData.firstName || formData.firstName.trim() === "") {
+      alert("Enter Your Name");
+      return;
+    }
+    if (!formData.email || formData.email.trim() === "") {
+      alert("Enter Your email");
+      return;
+    }
+    if (!formData.phoneNumber || formData.phoneNumber.trim() === "") {
+      alert("Enter Your phoneNumber");
+      return;
+    }
     // Send email
     const emailSent = await sendBookingEmail();
 
     if (!emailSent) {
+
       console.warn("Email sending failed, but booking is recorded");
     }
 
@@ -462,6 +478,14 @@ For any queries, contact us at +33 374 479 185
       paymentmethod: "",
       totalFare: "10,234.00",
     });
+
+    // Swal.fire({
+    //   position: "top-end",
+    //   icon: "success",
+    //   title: "Booking submitted successfully",
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // });
 
     // Reset all selection states
     setSelectedPackage("");
@@ -1092,13 +1116,14 @@ For any queries, contact us at +33 374 479 185
                 <div className="card-heading">3/3 Customer Details</div>
                 <div className="form-row">
                   <div className="input-icon-wrap">
-                    <label className="field-label">First Name</label>
+                    <label className="field-label">First Name <span style={{ color : 'red'}}>*</span></label>
                     <input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="First"
+                      required
                     />
                   </div>
 
@@ -1110,11 +1135,12 @@ For any queries, contact us at +33 374 479 185
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Last"
+
                     />
                   </div>
                 </div>
                 <br />
-                <label className="field-label">Email</label>
+                <label className="field-label">Email <span style={{ color : 'red'}}>*</span></label>
                 <div className="input-icon-wrap">
                   <input
                     type="email"
@@ -1122,10 +1148,11 @@ For any queries, contact us at +33 374 479 185
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
+                    required
                   />
                 </div>
 
-                <label className="field-label">Phone Number</label>
+                <label className="field-label">Phone Number <span style={{ color : 'red'}}>*</span></label>
                 <div className="input-icon-wrap">
                   <input
                     type="tel"
@@ -1133,6 +1160,7 @@ For any queries, contact us at +33 374 479 185
                     value={formData.phoneNumber}
                     onChange={handleInputChange}
                     placeholder="Phone number"
+                    required
                   />
                 </div>
 
