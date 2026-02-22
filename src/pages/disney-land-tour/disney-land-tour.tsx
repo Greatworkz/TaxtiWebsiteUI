@@ -5,8 +5,9 @@ import PaymentImage from '../../assets/payment-mode.svg';
 import FreeCancelImage from '../../assets/free-cancel.svg';
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 import Package from "../../component/Package/Package";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import calculatePrice from "../../component/priceCalculation/priceCalculator";
 
 const DisneyLandTour = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -203,8 +204,18 @@ const DisneyLandTour = () => {
     paymentmethod: "",
 
     // Total
-    totalFare: "10,234.00",
+    totalFare: "0.00",
   });
+
+  useEffect(() => {
+    const price = calculatePrice(
+      formData.pickupLocation,
+      formData.dropLocation,
+      formData.vehicleType,
+      formData.tripType
+    );
+    setFormData((prev) => ({ ...prev, totalFare: price }));
+  }, [formData.pickupLocation, formData.dropLocation, formData.vehicleType, formData.tripType]);
 
   const handleFromChange = (e: any) => {
     const value = e.target.value;
@@ -405,7 +416,7 @@ For any queries, contact us at +33 374 479 185
       email: "",
       phoneNumber: "",
       paymentmethod: "",
-      totalFare: "10,234.00",
+      totalFare: "0.00",
     });
 
     // Reset all selection states

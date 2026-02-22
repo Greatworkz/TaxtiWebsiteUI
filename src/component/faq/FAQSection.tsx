@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./FAQSection.css";
 import FaqImage from "../../assets/faq.svg";
-
+import "aos/dist/aos.css";
 // type FAQItem = {
 //   question: string;
 //   answer: string;
@@ -97,6 +97,8 @@ const FAQSection = () => {
                     viewBox="0 0 24 24" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"
+                    
+                    
                   >
                     <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -112,8 +114,9 @@ const FAQSection = () => {
         </div>
 
         {/* Right - Eiffel Tower Image */}
-        <div className="faq-image-col">
-          <img 
+        <div className="faq-image-col" >
+          <img  
+          data-aos="fade-up" data-aos-delay="100"
             src={FaqImage}
             alt="Eiffel Tower" 
             className="faq-eiffel-img"

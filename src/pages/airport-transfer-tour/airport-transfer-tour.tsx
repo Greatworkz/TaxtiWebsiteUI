@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BannerImage from "../../assets/airport_tour.png";
 import DriverImage from "../../assets/professional-driver.svg";
 import PaymentImage from "../../assets/payment-mode.svg";
 import FreeCancelImage from "../../assets/free-cancel.svg";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
-import Swal from "sweetalert2";
+import calculatePrice from "../../component/priceCalculation/priceCalculator";
 
 const ParisAirportTour = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -250,8 +250,19 @@ const ParisAirportTour = () => {
     paymentmethod: "",
 
     // Total
-    totalFare: "10,234.00",
+    totalFare: "",
+    tripType: ''
   });
+
+  useEffect(() => {
+    const price = calculatePrice(
+      formData.pickupLocation,
+      formData.dropLocation,
+      formData.vehicleType,
+      formData.tripType
+    );
+    setFormData((prev) => ({ ...prev, totalFare: price }));
+  }, [formData.pickupLocation, formData.dropLocation, formData.vehicleType, formData.tripType]);
 
   const handlePackageChange = (e: any) => {
     const value = e.target.value;
@@ -260,6 +271,7 @@ const ParisAirportTour = () => {
     setFormData((prev) => ({
       ...prev,
       tourPackage: value,
+      tripType : value == "Paris day tour (8 Hours)" ? 'round' :  'single' 
     }));
   };
 
@@ -476,7 +488,8 @@ For any queries, contact us at +33 374 479 185
       email: "",
       phoneNumber: "",
       paymentmethod: "",
-      totalFare: "10,234.00",
+      totalFare: "0.00",
+      tripType:""
     });
 
     // Swal.fire({

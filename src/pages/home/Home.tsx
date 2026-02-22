@@ -9,19 +9,20 @@ import HourlyPackage from "../../component/hourly-package/HourlyPackage";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
 import PackagePage from "../../component/Package/Package";
 import sefaImage from "../../assets/safe-secure.png";
-import sendBookingEmail  from "../../utils/emailService";
+import sendBookingEmail from "../../utils/emailService";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from "aos";import "aos/dist/aos.css";
+
 import { useEffect } from "react";
-
-
+import calculatePrice from "../../component/priceCalculation/priceCalculator";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true,   // animation happens only once
+      once: true, // animation happens only once
     });
   }, []);
 
@@ -171,6 +172,15 @@ const Home = () => {
     "Others",
   ];
 
+  const vehicleTypes = [
+    "Sedan (1-3 passengers)",
+    "SUV (1-4 passengers)",
+    "Minivan (1-7 passengers)",
+    "Luxury Sedan",
+    "Luxury SUV",
+    "Minibus (8-15 passengers)",
+  ];
+
   // Form data state
   const [formData, setFormData] = useState({
     // Trip details
@@ -184,6 +194,7 @@ const Home = () => {
     pickupTrainStation: "",
     pickupAirportHotel: "",
     pickupDisneyLocation: "",
+    vehicleType: "",
 
     // Extra location details for drop
     dropAddress: "",
@@ -206,8 +217,23 @@ const Home = () => {
     paymentmethod: "",
 
     // Step 3 (confirmation)
-    totalFare: "10,234.00",
+    totalFare: "0.00",
   });
+
+  useEffect(() => {
+    const price = calculatePrice(
+      formData.pickupLocation,
+      formData.dropLocation,
+      formData.vehicleType,
+      formData.tripType
+    );
+    setFormData((prev) => ({ ...prev, totalFare: price }));
+  }, [
+    formData.pickupLocation,
+    formData.dropLocation,
+    formData.vehicleType,
+    formData.tripType,
+  ]);
 
   const handleFromChange = (e: any) => {
     const value = e.target.value;
@@ -279,16 +305,14 @@ const Home = () => {
     }));
   };
 
-
-  
   const handleFinalSubmit = async () => {
     // Handle final booking submission
     console.log("Booking submitted:", formData);
 
     const emailSent = await sendBookingEmail(formData);
-    
+
     if (!emailSent) {
-      console.warn('Email sending failed, but booking is recorded');
+      console.warn("Email sending failed, but booking is recorded");
     }
 
     // Clear all form data
@@ -317,6 +341,7 @@ const Home = () => {
       arrivalFlightNumber: "",
       luggage: "",
       numberOfChildren: "",
+      vehicleType: "",
 
       // Step 2
       firstName: "",
@@ -326,7 +351,7 @@ const Home = () => {
       paymentmethod: "",
 
       // Step 3 (confirmation)
-      totalFare: "10,234.00",
+      totalFare: "0.00",
     });
 
     // Reset selection states
@@ -347,9 +372,16 @@ const Home = () => {
   const handleWhatsappClick = () => {
     const phoneNumber = "+9190032 06411"; // your number with country code
     const message = "Hello! I want to book a cab."; // optional pre-filled message
-    const whatsappLink = `https://wa.me/${phoneNumber.replace(/[^\d]/g, "")}?text=${encodeURIComponent(message)}`;
+    const whatsappLink = `https://wa.me/${phoneNumber.replace(
+      /[^\d]/g,
+      ""
+    )}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappLink, "_blank"); // open in new tab
+  };
+
+  const NavigateBookingPage = () => {
+    navigate("/booking");
   };
 
   return (
@@ -570,7 +602,7 @@ const Home = () => {
 
           <div className="TpBkCrd__item_btn TleFreBy">
             <p>
-              Total Fare: <span className="TleAmt">10,234.00 €</span>
+              Total Fare: <span className="TleAmt">{formData.totalFare} €</span>
             </p>
             <button onClick={openModal}>Book Now</button>
           </div>
@@ -580,7 +612,7 @@ const Home = () => {
       {/* Container for other sections */}
       <section className="container">
         {/* Our Tour Packages */}
-        <div className="TrPckBy"  data-aos="fade-up" data-aos-delay="100">
+        <div className="TrPckBy" data-aos="fade-up" data-aos-delay="100">
           <div className="titleBy">
             <span className="Title-line"></span>
             <h1 className="title">Our Tour Package</h1>
@@ -632,7 +664,7 @@ const Home = () => {
               free Through Mail
             </p>
             <div className="btn-grp">
-              <button className="btn1">Enquire Now</button>
+              <button className="btn1" onClick={NavigateBookingPage}>Enquire Now</button>
               <button className="btn2">Call Now</button>
             </div>
           </div>
@@ -661,12 +693,17 @@ const Home = () => {
                 From airport transfers to Disneyland Paris and city tours, we
                 ensure comfort, safety, and top-class service.
               </p>
-              <button className="cntWhtap-btn" onClick={handleWhatsappClick}>Connect Whatsapp</button>
+              <button className="cntWhtap-btn" onClick={handleWhatsappClick}>
+                Connect Whatsapp
+              </button>
             </div>
 
-            <div className="image-side " data-aos="fade-left"
-data-aos-duration="1000"
-data-aos-easing="ease-in-out">
+            <div
+              className="image-side "
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+            >
               <img src={AboutUsImage} alt="About Paris Disney Taxi" />
             </div>
           </div>
@@ -771,6 +808,24 @@ data-aos-easing="ease-in-out">
                         <option value="3">3</option>
                         <option value="4">4+</option>
                       </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label>Select Vehicle</label>
+                      <div className="select-wrap">
+                        <select
+                          name="vehicleType"
+                          value={formData.vehicleType}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Select Vehicle Type</option>
+                          {vehicleTypes.map((vehicle, index) => (
+                            <option key={index} value={vehicle}>
+                              {vehicle}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>

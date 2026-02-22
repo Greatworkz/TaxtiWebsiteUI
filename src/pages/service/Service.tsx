@@ -4,6 +4,8 @@ import ParisAirportTourImage from "../../assets/paris-airport-transport.svg";
 import DisnyImage from "../../assets/disney-transport.svg";
 import ParisTourImage from "../../assets/paris-city-tour.svg";
 import FAQSection from "../../component/faq/FAQSection";
+import LongDistance from "../../assets/paris-trip-2.svg";
+import "aos/dist/aos.css";
 const Service = () => {
 
   const services = [
@@ -27,6 +29,13 @@ const Service = () => {
       title: "Paris City Tour",
       description: "Book a trusted transfer service to pick you up and introduce you to the Historica Places in Paris, Pre-order travel essentials, and get all your questions answered before or during the trip.",
       link: "/TaxtiWebsiteUI/pariscity/tour"
+    },
+    {
+      id: 4,
+      image: LongDistance,
+      title: "Long Distance ",
+      description: "Book now your Private Paris city tour to visit most  city in the world in one day. Comfortable Car for the family with children, Mercedes minivan for a group or a Luxury transfer.",
+      link: "/TaxtiWebsiteUI/long/distance/tour"
     }
   ];
 
@@ -52,7 +61,8 @@ const Service = () => {
           <div 
             key={service.id} 
             className="service-card"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            style={{ animationDelay: `${index * 0.3}s` }}
+            
           >
             
             {/* Left - Service Image */}

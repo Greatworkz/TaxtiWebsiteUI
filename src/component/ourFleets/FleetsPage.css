@@ -205,9 +205,9 @@
   }
   
   @media (max-width: 640px) {
-    .fleets-container {
+    /* .fleets-container {
       padding: 0 20px;
-    }
+    } */
   
     .fleets-grid {
       grid-template-columns: 1fr;
@@ -220,6 +220,8 @@
     .fleet-image-wrap {
       height: 180px;
     }
+
+
   
   }
 
@@ -242,6 +244,9 @@
 
   .fleet-image-wrap{
     padding: 10px;
+  }
+  .fleet-img{
+    width: 90%;
   }
 
   .BtmTxt{

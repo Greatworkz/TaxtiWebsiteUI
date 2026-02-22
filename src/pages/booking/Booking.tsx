@@ -5,7 +5,8 @@ import FAQSection from "../../component/faq/FAQSection";
 import DriverImage from "../../assets/professional-driver.svg";
 import PaymentImage from "../../assets/payment-mode.svg";
 import FreeCancelImage from "../../assets/free-cancel.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import calculatePrice from "../../component/priceCalculation/priceCalculator"
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedFrom, setSelectedFrom] = useState("");
@@ -201,8 +202,19 @@ const Booking = () => {
     paymentmethod: "",
 
     // Total
-    totalFare: "10,234.00",
+    totalFare: "0.00",
   });
+
+  // Auto-calculate fare whenever route, vehicle, or trip type changes
+useEffect(() => {
+  const price = calculatePrice(
+    formData.pickupLocation,
+    formData.dropLocation,
+    formData.vehicleType,
+    formData.tripType
+  );
+  setFormData((prev) => ({ ...prev, totalFare: price }));
+}, [formData.pickupLocation, formData.dropLocation, formData.vehicleType, formData.tripType]);
 
   const handleFromChange = (e: any) => {
     const value = e.target.value;

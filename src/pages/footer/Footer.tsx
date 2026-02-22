@@ -6,7 +6,23 @@ import AmericanImage from "../../assets/american-express.svg";
 import YoutubeImage from "../../assets/youtube.svg";
 import InstaImage from "../../assets/insta.svg";
 import Fbimage from '../../assets/FB.svg';
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const NavigateAbtPages = () => {
+    navigate("/abouts");
+  };
+  
+  const NavigateAirportPages = () => {
+    navigate("/airport/transfer"); 
+  };
+  const NavigateDisneyPages = () => {
+    navigate("disney/tour");
+  };
+  const NavigatePcityPages = () => {
+    navigate("/pariscity/tour");
+  };
   return (
     <footer className="footer">
       
@@ -30,9 +46,9 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">Tour Packages</h4>
             <ul className="footer-list">
-              <li><a href="#airport">Airport</a></li>
-              <li><a href="#disneyland">Disneyland Paris</a></li>
-              <li><a href="#paris">Paris City</a></li>
+              <li><a onClick={NavigateAirportPages}>Airport</a></li>
+              <li><a onClick={NavigateDisneyPages}>Disneyland Paris</a></li>
+              <li><a onClick={NavigatePcityPages}>Paris City</a></li>
             </ul>
           </div>
 
@@ -42,7 +58,7 @@ const Footer = () => {
             <ul className="footer-list">
               <li><a href="#terms">Terms &amp; Conditions</a></li>
               <li><a href="#privacy">Privacy Policy</a></li>
-              <li><a href="#about">About Us</a></li>
+              <li><a onClick={NavigateAbtPages}>About Us</a></li>
             </ul>
           </div>
 

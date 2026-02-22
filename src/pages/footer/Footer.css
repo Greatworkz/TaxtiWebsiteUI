@@ -330,7 +330,7 @@
 /* Small Mobile - 640px and below */
 @media (max-width: 640px) {
   .footer-container {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
     gap: 32px;
     padding: 0 20px;
     text-align: center;

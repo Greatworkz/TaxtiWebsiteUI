@@ -121,7 +121,7 @@
     background-color: #454444;
     color: var(--color-white);
     align-items: center;
-    padding: 5px 12px;
+    padding: 5px 12px 10px;
     border-radius: 8px;
     margin-top: -7px;
 
@@ -210,7 +210,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 60px;
+    bottom: 85px;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -251,7 +251,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 12px 8px 15px;
-    gap: 20px;
+    gap: 10px;
     margin-top: 50px;
     border-radius: 8px;
     font-size: 15px;
@@ -316,7 +316,7 @@
 }
 
 .text-side p {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     font-size: 18px;
     font-style: regular;
 }
@@ -672,7 +672,8 @@
     }
 
     .AbtBy{
-        margin-bottom: 80px;
+        margin-top: 60px;
+        margin-bottom: 60px;
     }
     .PakageimgRow {
         gap: 20px;
@@ -770,6 +771,10 @@
 
 /* Mobile Portrait - 768px and below */
 @media (max-width: 768px) {
+    .AbtBy{
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
     .Banner {
         height: 450px;
     }
@@ -832,9 +837,10 @@
         font-size: 14px;
     }
 
-    /* .text-side {
-        text-align: center;
-    } */
+    .text-side {
+        /* text-align: center; */
+        padding-right: 20px;
+    }
 
     .modal-body {
         max-height: 50vh;
@@ -979,7 +985,8 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        width: -webkit-fill-available;
+        /* width: -webkit-fill-available; */
+        margin-top: 6px;
     }
 
     .TleFreBy button {

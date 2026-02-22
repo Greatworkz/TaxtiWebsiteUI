@@ -1,7 +1,8 @@
 import "./long-distance.css";
 import BannerImage from "../../assets/long-distance.png";
 import FleetsPage from "../../component/ourFleets/FleetsPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import calculatePrice from "../../component/priceCalculation/priceCalculator";
 
 const LongDistanceTour = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -201,8 +202,18 @@ const LongDistanceTour = () => {
     paymentmethod: "",
 
     // Total
-    totalFare: "10,234.00",
+    totalFare: "0.00",
   });
+
+  useEffect(() => {
+    const price = calculatePrice(
+      formData.pickupLocation,
+      formData.dropLocation,
+      formData.vehicleType,
+      formData.tripType
+    );
+    setFormData((prev) => ({ ...prev, totalFare: price }));
+  }, [formData.pickupLocation, formData.dropLocation, formData.vehicleType, formData.tripType]);
 
   const handleFromChange = (e: any) => {
     const value = e.target.value;
@@ -380,7 +391,7 @@ Total Fare: ${formData.totalFare} € (all taxes included)
       email: "",
       phoneNumber: "",
       paymentmethod: "",
-      totalFare: "10,234.00",
+      totalFare: "0.00",
     });
 
     // Reset all selection states

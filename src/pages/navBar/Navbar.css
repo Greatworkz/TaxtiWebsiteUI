@@ -46,6 +46,7 @@
 
 .navbar__menu a.active {
   font-weight: 600;
+  color: var(--color-orange);
   /* border-bottom: 2px solid black; */
   /* padding-bottom: 4px; */
 }
@@ -66,6 +67,7 @@
   width: 25px;
   height: 3px;
   background-color: black;
+  color: white;
   transition: all 0.3s ease;
   border-radius: 2px;
 }
@@ -138,7 +140,7 @@
     /* max-width: 300px; */
     flex-direction: column;
     gap: 0;
-    padding: 80px 30px 30px;
+    padding: 40px 30px 30px;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
     transform: none;
@@ -155,7 +157,7 @@
   .navbar__menu li {
     width: 100%;
     padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #393939;
     
   }
 
@@ -167,6 +169,7 @@
     display: block;
     width: 100%;
     font-size: 16px;
+    color: white;
   }
 
   .navbar__menu a.active {
