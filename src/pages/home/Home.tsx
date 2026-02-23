@@ -11,8 +11,8 @@ import PackagePage from "../../component/Package/Package";
 import sefaImage from "../../assets/safe-secure.png";
 import sendBookingEmail from "../../utils/emailService";
 
-import AOS from "aos";import "aos/dist/aos.css";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect } from "react";
 import calculatePrice from "../../component/priceCalculation/priceCalculator";
 import { useNavigate } from "react-router-dom";
@@ -588,7 +588,7 @@ const Home = () => {
               value={formData.passengers}
               onChange={handleInputChange}
             >
-              <option value="">Select Passengers</option>
+              {/* <option value="">Select Passengers</option> */}
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

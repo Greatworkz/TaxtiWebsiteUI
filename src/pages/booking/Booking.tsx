@@ -169,7 +169,7 @@ const Booking = () => {
     tripType: "single",
     pickupLocation: "",
     dropLocation: "",
-    passengers: "5",
+    passengers: "",
     vehicleType: "",
     pickupDate: "",
 
@@ -407,7 +407,7 @@ For any queries, contact us at +33 374 479 185
       tripType: "single",
       pickupLocation: "",
       dropLocation: "",
-      passengers: "5",
+      passengers: "",
       vehicleType: "",
       pickupDate: "",
       pickupTime: "",
